@@ -33,6 +33,7 @@ public class UserList {
         while(it.hasNext() & !trouve) {
             current = it.next();
             if (current.ip == ip){
+                trouve = true ;
                 foundUser=current;
             }
         }
