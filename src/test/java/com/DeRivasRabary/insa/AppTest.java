@@ -1,6 +1,5 @@
 package com.DeRivasRabary.insa;
 
-import com.DeRivasRabary.insa.User.User;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -37,9 +36,5 @@ public class AppTest
         assertTrue( true );
     }
 
-    @org.junit.Test
-    public void testIP (){
-        User testUser = new User("monPseudo");
-        assertEquals("127.0.0.1",testUser.ip);
-    }
+
 }
