@@ -1,6 +1,6 @@
 package com.DeRivasRabary.insa.ui;
 
-import com.DeRivasRabary.insa.infrastructure.Terminal;
+import com.DeRivasRabary.insa.ui.infrastructure.Terminal;
 
 public class ActionChooser {
 

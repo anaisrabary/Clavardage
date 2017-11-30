@@ -1,7 +1,7 @@
 package com.DeRivasRabary.insa.ui;
 
 import java.util.StringJoiner;
-import com.DeRivasRabary.insa.infrastructure.Terminal;
+import com.DeRivasRabary.insa.ui.infrastructure.Terminal;
 
 
 public class MainUI {

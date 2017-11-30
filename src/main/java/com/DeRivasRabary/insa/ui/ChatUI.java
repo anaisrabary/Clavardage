@@ -1,9 +1,8 @@
 package com.DeRivasRabary.insa.ui;
 
-import com.DeRivasRabary.insa.infrastructure.Terminal;
+import com.DeRivasRabary.insa.ui.infrastructure.Terminal;
 import com.DeRivasRabary.insa.factory.MessageFactory;
 import com.DeRivasRabary.insa.network.ReceiverManager;
-import com.DeRivasRabary.insa.network.SenderManager;
 
 public class ChatUI implements CommunicationUI {
 
