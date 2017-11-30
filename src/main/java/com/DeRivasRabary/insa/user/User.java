@@ -1,8 +1,8 @@
-package com.DeRivasRabary.insa.User;
+package com.DeRivasRabary.insa.user;
 
-import java.net.InetAddress;
 
 public class User  {
+
     public String pseudo ;
     public String ip ;
 
