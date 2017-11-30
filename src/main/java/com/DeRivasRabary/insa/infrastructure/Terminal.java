@@ -1,4 +1,4 @@
-package com.DeRivasRabary.insa.Infrastructure.terminal;
+package com.DeRivasRabary.insa.infrastructure;
 
 import java.util.Scanner;
 

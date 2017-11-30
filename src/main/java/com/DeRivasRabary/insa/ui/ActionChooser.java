@@ -1,18 +1,18 @@
 package com.DeRivasRabary.insa.ui;
 
-import com.DeRivasRabary.insa.Infrastructure.terminal.Terminal;
+import com.DeRivasRabary.insa.infrastructure.Terminal;
 
-public class ProtocolChooser {
+public class ActionChooser {
 
     private static final String SEND  = "send";
     private static final String RECEIVE = "receive";
     private final Terminal terminal;
 
-    public ProtocolChooser(Terminal terminal) {
+    public ActionChooser(Terminal terminal) {
         this.terminal = terminal;
     }
 
-    public void askProtocolOn(CommunicationUI communicationUI) {
+    public void askActionOn(CommunicationUI communicationUI) {
         System.out.print("Choose your action [send - receive] : ");
         String choice = terminal.readCommand();
         switch (choice) {

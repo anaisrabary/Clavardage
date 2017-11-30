@@ -1,14 +1,16 @@
 package com.DeRivasRabary.insa.factory;
 
+import com.DeRivasRabary.insa.network.ReceiverManager;
+import com.DeRivasRabary.insa.network.SenderManager;
+
 public class MessageFactory {
     @Override
-    public MessageService onSend() {
-        return new MessageService();
+    public SenderManager onSend() {
+        return new SenderManager();
     }
 
     @Override
-    public MessageService onReceive() {
-        return new MessageService();
+    public ReceiverManager onReceive() { return new ReceiverManager();
     }
 
 }
