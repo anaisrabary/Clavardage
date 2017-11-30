@@ -1,4 +1,4 @@
-package com.DeRivasRabary.insa.user;
+package com.DeRivasRabary.insa.exception;
 
 public class UtilisateurNonTrouve extends Exception {
 

@@ -7,7 +7,12 @@ public class User  {
     public String ip ;
 
 
-    /* Constructeur test puisqu'on entre l'ip manuellement */
+    /**
+     * Constructeur de USER
+     * TEMPORAIRE car on lui passe l'IP pour le moment !
+     * @param pseudo
+     * @param ip
+     */
     public User (String pseudo, String ip){
         this.pseudo = pseudo ;
         this.ip = ip ;

@@ -28,7 +28,7 @@ public class ChatUI implements CommunicationUI {
         receiveOnPort(messageFactory.onReceive());
     }
 
-    private void ReceiveOnPort(ReceiverManager receiverManager) {
+    private void receiveOnPort(ReceiverManager receiverManager) {
         try {
             receiverManager.listenOnPort(PORT, this);
         } catch (Exception exception) {

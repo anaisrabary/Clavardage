@@ -36,14 +36,14 @@ public class MainUI {
         String choice = terminal.readCommand();
         switch (choice) {
             case CONNECT:
-                actionChooser.askActionOn(chatUI);
                 break;
             case DISCONNECT:
-                actionChooser.askActionOn(chatUI);
                 break;
             case OPENNING_SESSION:
+                actionChooser.askActionOn(chatUI);
                 break;
             case CLOSING_SESSION:
+                actionChooser.askActionOn(chatUI);
                 break;
 
         }
