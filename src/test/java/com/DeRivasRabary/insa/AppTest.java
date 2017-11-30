@@ -1,4 +1,4 @@
-package com.fredericboisguerin.insa;
+package com.DeRivasRabary.insa;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

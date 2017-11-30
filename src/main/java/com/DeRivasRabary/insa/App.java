@@ -1,4 +1,4 @@
-package com.fredericboisguerin.insa;
+package com.DeRivasRabary.insa;
 
 /**
  * Hello world!
