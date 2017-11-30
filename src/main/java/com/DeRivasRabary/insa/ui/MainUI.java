@@ -24,7 +24,7 @@ public class MainUI {
     private final ActionChooser actionChooser;
     private final ChatUI chatUI ;
 
-    public MainUI(Terminal terminal, ActionChooser actionChooser, ChatUI chatUI,) {
+    public MainUI(Terminal terminal, ActionChooser actionChooser, ChatUI chatUI) {
         this.terminal = terminal;
         this.actionChooser = actionChooser;
         this.chatUI = chatUI;
