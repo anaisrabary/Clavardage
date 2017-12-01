@@ -17,6 +17,7 @@ public class UserList {
         userList.add(user);
     }
 
+
     /** Constructeur qui rajoute plusieurs utilisateurs à la liste
      * */
     public UserList(ArrayList<User> listeUser){
@@ -62,6 +63,9 @@ public class UserList {
         System.err.println("Pas implémenté !!");
     }
 
+    /**
+     * Search by name a faire !!
+     */
 
 
 }

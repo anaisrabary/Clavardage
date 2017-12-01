@@ -18,5 +18,9 @@ public class LocalUser extends User {
         this.actif = actif ;
     }
 
+    public void chanceEtatActif(boolean actif){
+        this.actif = actif ;
+    }
+
 
 }

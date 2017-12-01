@@ -18,4 +18,9 @@ public class User  {
         this.ip = ip ;
     }
 
+    @Override
+    public String toString(){
+        return "pseudo : " + this.pseudo + ", ip : " + this.ip + "\n" ;
+    }
+
 }
