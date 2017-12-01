@@ -4,7 +4,6 @@ package com.DeRivasRabary.insa.network.packet;
 import java.text.DateFormat;
 import java.util.Date;
 
-import static java.text.DateFormat.MEDIUM;
 
 public abstract class PacketManager {
 
@@ -12,7 +11,6 @@ public abstract class PacketManager {
     public String ipReceiver ;
     public String pseudo ;
     public String date ;
-
 
     /**
      * Constructeur de paquet commun à hello-bye-message
@@ -28,5 +26,4 @@ public abstract class PacketManager {
     }
 
     DateFormat mediumDateFormat = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM);
-
 }
