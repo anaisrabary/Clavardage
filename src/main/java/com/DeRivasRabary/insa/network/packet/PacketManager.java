@@ -1,10 +1,17 @@
 package com.DeRivasRabary.insa.network.packet;
 
-public class PacketManager {
+
+import java.text.DateFormat;
+import java.util.Date;
+
+import static java.text.DateFormat.MEDIUM;
+
+public abstract class PacketManager {
 
     public String ipSender ;
     public String ipReceiver ;
-    // rajouter un horodatage
+    public String pseudo ;
+    public String date ;
 
 
     /**
@@ -12,10 +19,14 @@ public class PacketManager {
      * @param ipSender
      * @param ipReceiver
      */
-    public PacketManager(String ipSender, String ipReceiver){
+
+    public PacketManager(String ipSender, String ipReceiver, String pseudo){
         this.ipSender = ipSender ;
         this.ipReceiver = ipReceiver ;
+        this.pseudo = pseudo ;
+        this.date = mediumDateFormat.format(new Date());
     }
 
+    DateFormat mediumDateFormat = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM);
 
 }
