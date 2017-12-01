@@ -5,18 +5,30 @@ import com.DeRivasRabary.insa.network.packet.*;
 public class PacketFactory {
 
 
+    public static PacketFactory instance ;
 
-    public static PacketManager createPackage(String ipSender, String ipReceiver, PacketManager packetManager){
 
-
-        if (Message.class==packetManager.getClass()){
-
+    public static PacketFactory createInstance() {
+        if (instance == null) {
+            instance = new PacketFactory();
         }
-        else if (Hello.class==packetManager.getClass()){
-
-        }
-        else if (Bye.class==packetManager.getClass()){
-
-        }
+        return instance;
     }
+
+
+    public Message createPacketMessage(String ipSender, String ipReceiver, String pseudo, String message){
+        Message packetMessage = new Message(ipSender, ipReceiver, pseudo, message);
+        return packetMessage;
+    }
+
+    public Hello createPacketHello(String ipSender, String ipReceiver, String pseudo, Boolean replyRec){
+        Hello packetHello = new Hello(ipSender,ipReceiver,pseudo,replyRec);
+        return packetHello ;
+    }
+
+    public Bye createPacketBye(String ipSender, String ipReceiver, String pseudo){
+        Bye packetBye = new Bye(ipSender, ipReceiver, pseudo);
+        return packetBye ;
+    }
+
 }
