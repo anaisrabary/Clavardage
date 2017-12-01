@@ -1,9 +1,9 @@
 package com.DeRivasRabary.insa.factory;
 
 public interface MessageServiceFactory<T> {
-        T onUDP();
+        T onSend();
 
-        T onTCP();
+        T onReceive();
 
     }
 

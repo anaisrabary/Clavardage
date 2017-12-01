@@ -1,5 +1,6 @@
 package com.DeRivasRabary.insa.ui;
 
+import com.DeRivasRabary.insa.factory.MessageServiceFactory;
 import com.DeRivasRabary.insa.ui.infrastructure.Terminal;
 
 public class ChatUI implements CommunicationUI {
@@ -9,21 +10,21 @@ public class ChatUI implements CommunicationUI {
     private  static final int PORT = 1234;
 
     private final Terminal terminal;
-    private final MessageFactory messageFactory;
+    private final MessageServiceFactory messageServiceFactory;
 
-    public ChatUI(Terminal terminal, MessageFactory messageReceiverServiceFactory) {
+    public ChatUI(Terminal terminal, MessageServiceFactory messageReceiverServiceFactory) {
         this.terminal = terminal;
-        this.messageFactory = messageReceiverServiceFactory;
+        this.messageServiceFactory = messageReceiverServiceFactory;
     }
 
     @Override
     public void onSend() {
-        sendMessageWith(messageFactory.onSend());
+        sendMessageWith(messageServiceFactory.onSend());
     }
 
     @Override
     public void onReceive() {
-        receiveOnPort(messageFactory.onReceive());
+        receiveOnPort(messageServiceFactory.onReceive());
     }
 
     private void receiveOnPort(ReceiverManager receiverManager) {
