@@ -6,7 +6,7 @@ package com.DeRivasRabary.insa.network.packet;
  */
 public  class Message extends PacketManager{
 
-    String message ;
+    public String message ;
 
     /**
      * Constructeur de message
@@ -18,6 +18,17 @@ public  class Message extends PacketManager{
     public Message(String ipSender, String ipReceiver, String pseudo, String message){
         super(ipSender, ipReceiver, pseudo);
         this.message = message ;
+    }
+
+    @Override
+    public String toString(){
+        String delimiter = "*************************\n"; // 25 *
+        String type = "Type : Message";
+        String ipsender = "IPSource : " + this.ipSender + "\n" ;
+        String ipreceiver = "IPDestination : " + this.ipReceiver + "\n";
+        String pseudo = "Pseudo : " + this.pseudo + "\n" ;
+        String message = "Message : " + this.message +"\n" ;
+        return delimiter + type + ipsender + ipreceiver + pseudo + message + delimiter ;
     }
 
 }

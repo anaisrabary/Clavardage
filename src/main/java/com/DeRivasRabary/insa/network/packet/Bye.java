@@ -8,6 +8,14 @@ public class Bye extends PacketManager {
         super(ipSender, ipReceiver,pseudo);
     }
 
-
+    @Override
+    public String toString(){
+        String delimiter = "*************************\n"; // 25 *
+        String type = "Type : Bye\n";
+        String ipsender = "IPSource : " + this.ipSender + "\n" ;
+        String ipreceiver = "IPDestination : " + this.ipReceiver + "\n";
+        String pseudo = "Pseudo : " + this.pseudo + "\n" ;
+        return delimiter+ type + ipsender + ipreceiver + pseudo + delimiter ;
+    }
 
 }

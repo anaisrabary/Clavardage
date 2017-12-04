@@ -12,6 +12,8 @@ import java.util.ArrayList;
 /**
  * Unit test for simple App.
  */
+
+// TODO : lancer les tests
 public class UserTest extends TestCase {
 
 
