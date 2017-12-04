@@ -24,6 +24,10 @@ public class UserList {
         this.userList=listeUser;
     }
 
+    /*
+        Créer un constructeur qui peut prendre aussi bien 0 que n utilisateurs
+     */
+
 
     /**
      * Méthode qui renvoie si il existe, l'utilisateur connaissant son Ip
@@ -47,25 +51,59 @@ public class UserList {
     }
 
     /**
-     * Récupère l'IP connaissant le pseudo d'un utilisateur
+     * Récupère l'user connaissant le pseudo d'un utilisateur
      * @param pseudo
      */
-    public void getIpBypseudo(String pseudo){
-        // transformer le retour void en User
-        System.err.println("Pas implémenté !!");
+    public User getUserByPseudo(String pseudo) throws UtilisateurNonTrouve {
+        ListIterator<User> it = userList.listIterator();
+        User current ;
+        User foundUser = new User("","") ;
+
+
+        boolean trouve = false ;
+        while(it.hasNext() & !trouve) {
+            current = it.next();
+            if (current.pseudo == pseudo){
+                trouve = true ;
+                foundUser=current;
+            }
+        }
+        if (!trouve){
+            throw new UtilisateurNonTrouve("Pas d'utilisateur portant ce pseudo");
+        }
+        return foundUser;
     }
+
+
 
     /**
      * Met à jour le pseudo connaissant l'IP d'un utilisateur
      * @param ip
      */
-    public void updatePseudobyIp(String ip){
-        System.err.println("Pas implémenté !!");
+    public void updatePseudobyIp(String ip,String newPseudo) throws UtilisateurNonTrouve {
+        ListIterator<User> it = userList.listIterator();
+        User current ;
+        boolean trouve = false ;
+        while(it.hasNext() & !trouve) {
+            current = it.next();
+            if (current.ip == ip){
+                trouve = true ;
+                current.pseudo=newPseudo;
+            }
+        }
+        if (!trouve){
+            throw new UtilisateurNonTrouve("Pas d'utilisateur portant cet IP");
+        }
     }
 
-    /**
-     * Search by name a faire !!
-     */
 
 
+    @Override
+    public String toString(){
+        String message = "" ;
+        for (User u: this.userList) {
+            message = message + u.toString();
+        }
+        return message ;
+    }
 }
