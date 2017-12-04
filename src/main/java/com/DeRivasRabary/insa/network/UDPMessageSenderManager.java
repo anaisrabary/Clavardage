@@ -4,8 +4,9 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
-public class UDPMessageSenderManager{
+public class UDPMessageSenderManager implements MessageSenderService{
 
+    @Override
     public void sendMessageOn(String ipAddress, String port, String message) throws Exception {
         DatagramSocket senderSocket = new DatagramSocket();
         byte[] data = message.getBytes();

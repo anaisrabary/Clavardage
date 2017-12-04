@@ -2,7 +2,7 @@ package com.DeRivasRabary.insa.network;
 
 import java.net.DatagramPacket;
 
-public class ClavardageNI {
+public class ClavardageNI implements IncomingMessageListener{
     private  static final int PORT = 1234;
     public ClavardageNI(){
 
@@ -19,20 +19,23 @@ public class ClavardageNI {
 
     }
 
-    public String onReceive()throws Exception{
+    public void onReceive()throws Exception{
         try {
             System.out.println("here");
-            UDPMessageReceiverManager udpMessageReceiverManager = new UDPMessageReceiverManager(PORT);
-            String data = udpMessageReceiverManager.listenOnPort() ;
-            return data;
+            UDPMessageReceiverManager udpMessageReceiverManager = new UDPMessageReceiverManager();
+            udpMessageReceiverManager.listenOnPort(PORT,this ) ;
+
         }
         catch (Exception e){
             System.out.println("yolo");
             e.printStackTrace();
-            return "";
         }
     }
 
 
+    @Override
+    public void onNewIncominMessage(String message) {
+       System.out.println("New incoming message: " + message);
+    }
 
 }
