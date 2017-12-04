@@ -4,6 +4,8 @@ import com.DeRivasRabary.insa.network.ClavardageNI;
 import com.DeRivasRabary.insa.network.UDPMessageReceiverManager;
 import com.DeRivasRabary.insa.ui.infrastructure.Terminal;
 
+import java.io.InputStreamReader;
+
 public class ChatUI {
     private static final String ERROR_MESSAGE = "[ERROR] An error occured while trying to listen on port";
     private static final String NOTIFICATION_FORMAT = "[INFO] Your message has been sent to %s on port %d";
@@ -36,7 +38,7 @@ public class ChatUI {
 
         try {
             clavardageNI.onSend(ipAddress, port, message);
-            terminal.print(String.format(NOTIFICATION_FORMAT, ipAddress, port));
+            terminal.print(String.format(NOTIFICATION_FORMAT, ipAddress, Integer.valueOf(port)));
         } catch (Exception exception) {
             terminal.printError(ERROR_MESSAGE);
             terminal.printError(exception);
@@ -45,7 +47,8 @@ public class ChatUI {
 
     public void onReceive () {
         try {
-           clavardageNI.onReceive();
+           System.out.println(clavardageNI.onReceive());
+
         } catch (Exception exception) {
             terminal.printError(ERROR_MESSAGE);
             terminal.printError(exception);

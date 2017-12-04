@@ -15,12 +15,15 @@ public class UDPMessageReceiverManager{
         this.receiverSocket = new DatagramSocket(this.port);
     }
 
-    public DatagramPacket listenOnPort() throws Exception {
+
+    public String listenOnPort() throws Exception {
         DatagramPacket receiverPacket = new DatagramPacket(new byte[1000],1000);
         while(isRunning){
             receiverSocket.receive(receiverPacket);
+            byte[] data = receiverPacket.getData();
+            return String.valueOf(data);
         }
-        return receiverPacket;
+        return "";
     }
 
 

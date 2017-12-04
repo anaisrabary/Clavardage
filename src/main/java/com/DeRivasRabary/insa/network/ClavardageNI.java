@@ -21,13 +21,13 @@ public class ClavardageNI {
 
     public String onReceive()throws Exception{
         try {
+            System.out.println("here");
             UDPMessageReceiverManager udpMessageReceiverManager = new UDPMessageReceiverManager(PORT);
-            DatagramPacket receiverPacket = udpMessageReceiverManager.listenOnPort() ;
-            byte[] data = receiverPacket.getData();
-            return String.valueOf(data);
-
+            String data = udpMessageReceiverManager.listenOnPort() ;
+            return data;
         }
         catch (Exception e){
+            System.out.println("yolo");
             e.printStackTrace();
             return "";
         }
