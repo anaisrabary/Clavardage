@@ -1,6 +1,7 @@
 package com.DeRivasRabary.insa.ui;
 
 import java.util.StringJoiner;
+
 import com.DeRivasRabary.insa.ui.infrastructure.Terminal;
 
 
@@ -21,12 +22,10 @@ public class MainUI {
 
 
     private final Terminal terminal;
-    private final ActionChooser actionChooser;
     private final ChatUI chatUI ;
 
-    public MainUI(Terminal terminal, ActionChooser actionChooser, ChatUI chatUI) {
+    public MainUI(Terminal terminal, ChatUI chatUI) {
         this.terminal = terminal;
-        this.actionChooser = actionChooser;
         this.chatUI = chatUI;
     }
 
@@ -40,10 +39,9 @@ public class MainUI {
             case DISCONNECT:
                 break;
             case OPENNING_SESSION:
-                actionChooser.askActionOn(chatUI);
+                chatUI.principal();
                 break;
             case CLOSING_SESSION:
-                actionChooser.askActionOn(chatUI);
                 break;
 
         }

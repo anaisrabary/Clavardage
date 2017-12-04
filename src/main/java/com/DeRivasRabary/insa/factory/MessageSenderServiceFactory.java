@@ -1,18 +1,19 @@
-package com.DeRivasRabary.insa.factory;
+/*package com.DeRivasRabary.insa.factory;
 
-import com.DeRivasRabary.insa.network.MessageSenderService;
-import com.DeRivasRabary.insa.network.TCPMessageSenderManager;
+//import com.DeRivasRabary.insa.network.TCPMessageSenderManager;
 import com.DeRivasRabary.insa.network.UDPMessageSenderManager;
 
 public class MessageSenderServiceFactory implements MessageServiceFactory<MessageSenderService> {
 
     @Override
-    public MessageSenderService onTCP() {
-        return new TCPMessageSenderManager();
+    public MessageSenderService onSend() {
+        return  new UDPMessageSenderManager();
+        //return new TCPMessageSenderManager();
     }
 
     @Override
-    public MessageSenderService onUDP() {
+    public MessageSenderService onReceive() {
         return new UDPMessageSenderManager();
     }
 }
+*/

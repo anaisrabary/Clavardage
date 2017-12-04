@@ -1,21 +1,31 @@
 package com.DeRivasRabary.insa.network;
 
+
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 
-public class UDPMessageReceiverManager implements MessageReceiverService {
-    @Override
-    public void listenOnPort(int port, IncomingMessageListener incomingMessageListener) throws Exception {
-        DatagramSocket receiverSocket = new DatagramSocket(port);
 
-        while(true){
-            DatagramPacket receiverPacket = new DatagramPacket(new byte[1000],1000); // TEst
+public class UDPMessageReceiverManager{
+    private Boolean isRunning = true;
+    private final DatagramSocket receiverSocket;
+    public final int port;
+
+    public UDPMessageReceiverManager (int port)throws Exception{
+        this.port = port;
+        this.receiverSocket = new DatagramSocket(this.port);
+    }
+
+    public DatagramPacket listenOnPort() throws Exception {
+        DatagramPacket receiverPacket = new DatagramPacket(new byte[1000],1000);
+        while(isRunning){
             receiverSocket.receive(receiverPacket);
-            byte[] data = receiverPacket.getData();
-
-            incomingMessageListener.onNewIncomingMessage(new String(data));
-
         }
+        return receiverPacket;
+    }
 
+
+    public void close(){
+        isRunning = false;
+        this.receiverSocket.close();
     }
 }

@@ -1,4 +1,4 @@
-package com.DeRivasRabary.insa.network;
+/*package com.DeRivasRabary.insa.network;
 
 import java.io.PrintWriter;
 import java.net.ServerSocket;
@@ -13,3 +13,4 @@ public class TCPMessageReceiverManager implements MessageReceiverService {
         //throw new UnsupportedOperationException();
     }
 }
+*/

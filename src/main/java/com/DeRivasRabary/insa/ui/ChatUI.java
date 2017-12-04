@@ -1,55 +1,58 @@
 package com.DeRivasRabary.insa.ui;
 
-import com.DeRivasRabary.insa.factory.MessageServiceFactory;
+import com.DeRivasRabary.insa.network.ClavardageNI;
+import com.DeRivasRabary.insa.network.UDPMessageReceiverManager;
 import com.DeRivasRabary.insa.ui.infrastructure.Terminal;
 
-public class ChatUI implements CommunicationUI {
-
+public class ChatUI {
     private static final String ERROR_MESSAGE = "[ERROR] An error occured while trying to listen on port";
     private static final String NOTIFICATION_FORMAT = "[INFO] Your message has been sent to %s on port %d";
-    private  static final int PORT = 1234;
+
 
     private final Terminal terminal;
-    private final MessageServiceFactory messageServiceFactory;
+    private final ClavardageNI clavardageNI;
 
-    public ChatUI(Terminal terminal, MessageServiceFactory messageReceiverServiceFactory) {
+    public ChatUI(Terminal terminal, ClavardageNI clavardageNI) {
         this.terminal = terminal;
-        this.messageServiceFactory = messageReceiverServiceFactory;
+        this.clavardageNI = clavardageNI;
     }
 
-    @Override
+    public void principal(){
+        boolean open = true;
+        ActionChooser actionChooser = new ActionChooser(terminal,this);
+        do {
+            actionChooser.askActionOn(this);
+
+        }while(open);
+    }
+
     public void onSend() {
-        sendMessageWith(messageServiceFactory.onSend());
-    }
-
-    @Override
-    public void onReceive() {
-        receiveOnPort(messageServiceFactory.onReceive());
-    }
-
-    private void receiveOnPort(ReceiverManager receiverManager) {
-        try {
-            receiverManager.listenOnPort(PORT, this);
-        } catch (Exception exception) {
-            terminal.printError(ERROR_MESSAGE);
-            terminal.printError(exception);
-        }
-    }
-    private void sendMessageWith(SenderManager senderManager) {
         System.out.print("Destination IP address : ");
         String ipAddress = terminal.readLine();
         System.out.print("Destination port : ");
         String port = terminal.readCommand();
         System.out.print("Message : ");
         String message = terminal.readLine();
+
         try {
-            senderManager.sendMessageOn(ipAddress, port, message);
+            clavardageNI.onSend(ipAddress, port, message);
             terminal.print(String.format(NOTIFICATION_FORMAT, ipAddress, port));
         } catch (Exception exception) {
             terminal.printError(ERROR_MESSAGE);
             terminal.printError(exception);
         }
     }
+
+    public void onReceive () {
+        try {
+           clavardageNI.onReceive();
+        } catch (Exception exception) {
+            terminal.printError(ERROR_MESSAGE);
+            terminal.printError(exception);
+        }
+    }
+
+
 /*
     @Override
     public void onNewIncomingMessage(String message) {

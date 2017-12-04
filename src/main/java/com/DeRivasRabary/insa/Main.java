@@ -1,11 +1,9 @@
 package com.DeRivasRabary.insa;
 
 
-import com.DeRivasRabary.insa.factory.MessageReceiverServiceFactory;
-import com.DeRivasRabary.insa.factory.MessageSenderServiceFactory;
+import com.DeRivasRabary.insa.network.ClavardageNI;
 import com.DeRivasRabary.insa.ui.ActionChooser;
 import com.DeRivasRabary.insa.ui.ChatUI;
-import com.DeRivasRabary.insa.ui.CommunicationUI;
 import com.DeRivasRabary.insa.ui.MainUI;
 import com.DeRivasRabary.insa.ui.infrastructure.Terminal;
 
@@ -19,11 +17,13 @@ public class Main
 {
     public static void main(String[] args) throws IOException {
         Terminal terminal = new Terminal();
-        ChatUI chatUI = new ChatUI(terminal, new MessageReceiverServiceFactory());
-        MainUI mainUI = new MainUI(terminal,);
+        ChatUI chatUI = new ChatUI(terminal, new ClavardageNI());
+        ActionChooser actionChooser = new ActionChooser(terminal, chatUI);
+        MainUI mainUI = new MainUI(terminal, actionChooser, chatUI);
         mainUI.askForAction();
-        StartingUI startingUI = new StartingUI(terminal, new ActionChooser(terminal), receiveUI, sendUI);
+       /* StartingUI startingUI = new StartingUI(terminal, new ActionChooser(terminal), receiveUI, sendUI);
         startingUI.askForAction();
+        */
     }
 }
 

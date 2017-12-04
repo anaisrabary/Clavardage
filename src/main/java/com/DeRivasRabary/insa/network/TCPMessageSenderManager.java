@@ -1,4 +1,4 @@
-package com.DeRivasRabary.insa.network;
+/*package com.DeRivasRabary.insa.network;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -21,3 +21,4 @@ public class TCPMessageSenderManager implements MessageSenderService {
         //throw new UnsupportedOperationException();
     }
 }
+*/
