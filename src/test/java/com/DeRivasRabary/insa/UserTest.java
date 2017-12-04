@@ -13,7 +13,6 @@ import java.util.ArrayList;
  * Unit test for simple App.
  */
 
-// TODO : lancer les tests
 public class UserTest extends TestCase {
 
 
@@ -26,7 +25,7 @@ public class UserTest extends TestCase {
 
     public void testUserDisplay(){
         User user = new User("Jeannot","127.0.0.1");
-        assertEquals("pseudo : Jeannot, ip : 127.0.0.1", user.toString());
+        assertEquals("pseudo : Jeannot, ip : 127.0.0.1\n", user.toString());
     }
 
 
@@ -51,7 +50,7 @@ public class UserTest extends TestCase {
         ArrayList<User> listeUser = new ArrayList<User>();
         listeUser.add(user1);listeUser.add(user2);listeUser.add(user3);
         String message = listeUser.toString();
-        assertEquals("pseudo : Jeannot, ip : 127.0.0.1\npseudo : Pierrot, ip : 127.0.0.2\nPseudo : Paulo, ip : 127.0.0.3",message);
+        assertEquals("[pseudo : Jeannot, ip : 127.0.0.1\n, pseudo : Pierrot, ip : 127.0.0.2\n, pseudo : Paulo, ip : 127.0.0.3\n]",message);
     }
 
     public void testCreateUserListWithOneUserEachTime(){
@@ -106,7 +105,7 @@ public class UserTest extends TestCase {
             assertEquals(false,true);
         }
         try {
-            userRequested = userList.getUserByIp("127.0.0.2");
+            userRequested = userList.getUserByIp("127.0.0.3");
             assertEquals("Paulo", userRequested.pseudo);
             assertEquals("127.0.0.3", userRequested.ip);
         }

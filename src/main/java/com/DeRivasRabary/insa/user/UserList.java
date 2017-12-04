@@ -14,6 +14,7 @@ public class UserList {
      *
      * */
     public UserList(User user){
+        userList = new ArrayList<User>();
         userList.add(user);
     }
 
@@ -106,4 +107,5 @@ public class UserList {
         }
         return message ;
     }
+    
 }
