@@ -18,8 +18,7 @@ public class Main
     public static void main(String[] args) throws IOException {
         Terminal terminal = new Terminal();
         ChatUI chatUI = new ChatUI(terminal, new ClavardageNI());
-        ActionChooser actionChooser = new ActionChooser(terminal, chatUI);
-        MainUI mainUI = new MainUI(terminal, actionChooser, chatUI);
+        MainUI mainUI = new MainUI(terminal, chatUI);
         mainUI.askForAction();
        /* StartingUI startingUI = new StartingUI(terminal, new ActionChooser(terminal), receiveUI, sendUI);
         startingUI.askForAction();
