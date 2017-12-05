@@ -4,6 +4,15 @@ public class Hello extends PacketManager {
 
     public Boolean replyRec ;
 
+    /**
+     * Constructeur d'un Hello pour dire aux autres qu'on est sur le réseau
+     * Utiliser la classe PacketFactory pour construire un paquet
+     * Si replyRec est vrai on demande à tous les récepteurs de nous envoyer un hello en retour
+     * @param ipSender
+     * @param ipReceiver
+     * @param pseudo
+     * @param replyRec
+     */
     public Hello(String ipSender, String ipReceiver, String pseudo, Boolean replyRec){
         super(ipSender, ipReceiver, pseudo);
         this.replyRec = replyRec ;

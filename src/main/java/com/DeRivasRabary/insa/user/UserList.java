@@ -32,7 +32,10 @@ public class UserList {
 
     /**
      * Méthode qui renvoie si il existe, l'utilisateur connaissant son Ip
-     * */
+     * @param ip
+     * @return User
+     * @throws UtilisateurNonTrouve
+     */
     public User getUserByIp(String ip)throws UtilisateurNonTrouve {
         ListIterator<User> it = userList.listIterator();
         User current ;
@@ -54,6 +57,8 @@ public class UserList {
     /**
      * Récupère l'user connaissant le pseudo d'un utilisateur
      * @param pseudo
+     * @return User
+     * @throws UtilisateurNonTrouve
      */
     public User getUserByPseudo(String pseudo) throws UtilisateurNonTrouve {
         ListIterator<User> it = userList.listIterator();
@@ -76,10 +81,11 @@ public class UserList {
     }
 
 
-
     /**
      * Met à jour le pseudo connaissant l'IP d'un utilisateur
      * @param ip
+     * @param newPseudo
+     * @throws UtilisateurNonTrouve
      */
     public void updatePseudobyIp(String ip,String newPseudo) throws UtilisateurNonTrouve {
         ListIterator<User> it = userList.listIterator();

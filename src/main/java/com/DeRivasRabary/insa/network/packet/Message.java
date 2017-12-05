@@ -4,12 +4,13 @@ package com.DeRivasRabary.insa.network.packet;
 /**
  * Classe message hérite de packetManager et construit un message pour une conversation
  */
-public  class Message extends PacketManager{
+public class Message extends PacketManager{
 
     public String message ;
 
     /**
-     * Constructeur de message
+     * Constructeur de message classique pour une conversation
+     * Utiliser la classe PacketFactory pour construire un paquet
      * @param ipSender
      * @param ipReceiver
      * @param pseudo

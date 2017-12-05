@@ -3,7 +3,13 @@ package com.DeRivasRabary.insa.network.packet;
 public class Bye extends PacketManager {
 
 
-
+    /**
+     * Constructeur du Bye pour signaler à tout le monde qu'on s'en va
+     * Utiliser la classe PacketFactory pour construire un paquet
+     * @param ipSender
+     * @param ipReceiver
+     * @param pseudo
+     */
     public Bye(String ipSender, String ipReceiver, String pseudo){
         super(ipSender, ipReceiver,pseudo);
     }

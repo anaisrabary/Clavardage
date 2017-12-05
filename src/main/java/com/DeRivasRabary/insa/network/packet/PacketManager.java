@@ -14,11 +14,12 @@ public abstract class PacketManager {
 
     /**
      * Constructeur de paquet commun à hello-bye-message
-     * Ne sert que pour le constructeur
+     * Ne sert que pour les différents paquets spécifiques
+     * Génère la date du paquet
      * @param ipSender
      * @param ipReceiver
+     * @param pseudo
      */
-
     public PacketManager(String ipSender, String ipReceiver, String pseudo){
         this.ipSender = ipSender ;
         this.ipReceiver = ipReceiver ;

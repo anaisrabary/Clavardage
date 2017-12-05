@@ -9,7 +9,7 @@ public class User  {
 
     /**
      * Constructeur de USER
-     * TEMPORAIRE car on lui passe l'IP pour le moment !
+     * TEMPORAIRE sans doute car on lui passe l'IP pour le moment !
      * @param pseudo
      * @param ip
      */

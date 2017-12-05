@@ -3,9 +3,7 @@ package com.DeRivasRabary.insa;
 import com.DeRivasRabary.insa.user.LocalUser;
 import com.DeRivasRabary.insa.user.User;
 import com.DeRivasRabary.insa.user.UserList;
-import junit.framework.Test;
 import junit.framework.TestCase;
-import junit.framework.TestSuite;
 
 import java.util.ArrayList;
 
@@ -39,7 +37,7 @@ public class UserTest extends TestCase {
     public void testChangeStateOfLocalUser(){
         LocalUser localUser = new LocalUser("Bloop","127.0.0.1",true);
         assertEquals(true,localUser.actif);
-        localUser.chanceEtatActif(false);
+        localUser.changeEtatActif(false);
         assertEquals(false,localUser.actif);
     }
 
