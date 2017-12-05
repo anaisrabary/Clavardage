@@ -11,13 +11,14 @@ public class Hello extends PacketManager {
 
     @Override
     public String toString(){
-        String delimiter = "*************************\n"; // 25 *
-        String type = "Type : Hello";
+        String delimiter = "******************************\n"; // 30 *
+        String type = "Type : Hello\n";
         String ipsender = "IPSource : " + this.ipSender + "\n" ;
         String ipreceiver = "IPDestination : " + this.ipReceiver + "\n";
+        String date = "Date : " + this.date + "\n";
         String pseudo = "Pseudo : " + this.pseudo + "\n" ;
         String replyrec = "ReplyRec : " + Boolean.toString(this.replyRec) +"\n" ;
-        return delimiter + type + ipsender + ipreceiver + pseudo + replyrec + delimiter ;
+        return delimiter + type + ipsender + ipreceiver + date + pseudo + replyrec + delimiter ;
     }
 
 

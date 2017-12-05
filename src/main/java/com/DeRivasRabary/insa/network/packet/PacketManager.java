@@ -14,6 +14,7 @@ public abstract class PacketManager {
 
     /**
      * Constructeur de paquet commun à hello-bye-message
+     * Ne sert que pour le constructeur
      * @param ipSender
      * @param ipReceiver
      */

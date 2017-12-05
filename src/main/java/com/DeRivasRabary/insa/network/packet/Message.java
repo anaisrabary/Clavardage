@@ -22,13 +22,14 @@ public  class Message extends PacketManager{
 
     @Override
     public String toString(){
-        String delimiter = "*************************\n"; // 25 *
-        String type = "Type : Message";
+        String delimiter = "******************************\n"; // 30 *
+        String type = "Type : Message\n";
         String ipsender = "IPSource : " + this.ipSender + "\n" ;
         String ipreceiver = "IPDestination : " + this.ipReceiver + "\n";
+        String date = "Date : " + this.date + "\n";
         String pseudo = "Pseudo : " + this.pseudo + "\n" ;
         String message = "Message : " + this.message +"\n" ;
-        return delimiter + type + ipsender + ipreceiver + pseudo + message + delimiter ;
+        return delimiter + type + ipsender + ipreceiver + date + pseudo + message + delimiter ;
     }
 
 }
