@@ -1,5 +1,7 @@
 package com.DeRivasRabary.insa.network.packet;
 
+import static com.DeRivasRabary.insa.network.packet.TypePacket.BYE;
+
 public class Bye extends PacketManager {
 
 
@@ -11,7 +13,7 @@ public class Bye extends PacketManager {
      * @param pseudo
      */
     public Bye(String ipSender, String ipReceiver, String pseudo){
-        super(ipSender, ipReceiver,pseudo);
+        super(ipSender, ipReceiver,pseudo, BYE);
     }
 
     @Override

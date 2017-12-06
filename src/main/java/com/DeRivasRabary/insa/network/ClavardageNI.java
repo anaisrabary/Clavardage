@@ -1,6 +1,8 @@
 package com.DeRivasRabary.insa.network;
 
-import java.net.DatagramPacket;
+
+import com.DeRivasRabary.insa.network.packet.PacketManager;
+
 
 public class ClavardageNI implements IncomingMessageListener{
     private  static final int PORT = 1234;
@@ -8,16 +10,15 @@ public class ClavardageNI implements IncomingMessageListener{
     }
 
     /**
-     * Envoie un message sur le réseau
-     * TODO : transformer message en paquet
-     * @param ipAddress
-     * @param port
-     * @param message
+     * Envoie un packet sur le réseau
      */
-    public void onSend(String ipAddress, String port, String message ) {
+    public void onSend(PacketManager packet) {
        UDPMessageSenderManager udpMessageSenderManager = new UDPMessageSenderManager();
        try {
-           udpMessageSenderManager.sendMessageOn(ipAddress, port, message);
+           if ( packet.isPacketMESSAGE())
+            udpMessageSenderManager.sendMessageOn(packet);
+           if (packet.isPacketBYE() || packet.isPacketHELLO()); // TODO !!!
+
        }catch (Exception e){
            e.printStackTrace();
        }
@@ -31,9 +32,9 @@ public class ClavardageNI implements IncomingMessageListener{
      */
     public void onReceive() throws Exception{
         try {
-            System.out.println("here");
-            UDPMessageReceiverManager udpMessageReceiverManager = new UDPMessageReceiverManager();
+            UDPMessageReceiverManager udpMessageReceiverManager = new UDPMessageReceiverManager(PORT);
             udpMessageReceiverManager.listenOnPort(PORT,this ) ;
+            udpMessageReceiverManager.close();
 
         }
         catch (Exception e){
@@ -44,12 +45,14 @@ public class ClavardageNI implements IncomingMessageListener{
 
     /**
      * Affiche un message reçu
-     * TODO : remplacer message par paquet et dans l'affichage tu peux juste faire paquet.toString(). J'ai déjà définit des méthodes et ça devrait marcher si tout va bien.
-     * @param message
+     * TODO : remplacer message par paquet et dans l'affichage tu peux juste faire paquet.toString().
+     * TODO : c'est pas si simple que ça.. je ne sais pas comment dire que ce que je reçois d'un UDP (des byte) c'est un packet et pas un String....
+     * TODO : ça s'affiche comme on veut en tout cas
+     *  @param packet
      */
     @Override
-    public void onNewIncominMessage(String message) {
-       System.out.println("New incoming message: " + message);
+    public void onNewIncominMessage(String packet) {
+       System.out.println("New incoming message: \n" + packet);
     }
 
     //TODO : Envoyer des hello réguliers sur le réseau pour signifier aux autres qu'on est là.

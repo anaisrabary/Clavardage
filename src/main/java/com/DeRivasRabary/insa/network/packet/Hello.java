@@ -1,5 +1,7 @@
 package com.DeRivasRabary.insa.network.packet;
 
+import static com.DeRivasRabary.insa.network.packet.TypePacket.HELLO;
+
 public class Hello extends PacketManager {
 
     public Boolean replyRec ;
@@ -14,7 +16,7 @@ public class Hello extends PacketManager {
      * @param replyRec
      */
     public Hello(String ipSender, String ipReceiver, String pseudo, Boolean replyRec){
-        super(ipSender, ipReceiver, pseudo);
+        super(ipSender, ipReceiver, pseudo, HELLO);
         this.replyRec = replyRec ;
     }
 

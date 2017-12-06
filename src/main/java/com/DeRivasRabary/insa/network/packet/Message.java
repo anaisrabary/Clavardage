@@ -1,6 +1,8 @@
 package com.DeRivasRabary.insa.network.packet;
 
 
+import static com.DeRivasRabary.insa.network.packet.TypePacket.MESSAGE;
+
 /**
  * Classe message hérite de packetManager et construit un message pour une conversation
  */
@@ -17,7 +19,7 @@ public class Message extends PacketManager{
      * @param message
      */
     public Message(String ipSender, String ipReceiver, String pseudo, String message){
-        super(ipSender, ipReceiver, pseudo);
+        super(ipSender, ipReceiver, pseudo, MESSAGE);
         this.message = message ;
     }
 
