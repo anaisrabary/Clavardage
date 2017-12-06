@@ -4,6 +4,8 @@ import com.DeRivasRabary.insa.factory.PacketFactory;
 import com.DeRivasRabary.insa.network.ClavardageNI;
 import com.DeRivasRabary.insa.network.packet.Message;
 import com.DeRivasRabary.insa.ui.infrastructure.Terminal;
+import com.DeRivasRabary.insa.user.User;
+import com.DeRivasRabary.insa.user.UserList;
 
 
 import static com.DeRivasRabary.insa.network.ClasseTestReseau.getLocalAdress;
@@ -17,19 +19,36 @@ public class ChatUI{
     private final ClavardageNI clavardageNI;
     private final PacketFactory packetFactory ;
 
+
     public ChatUI(Terminal terminal, ClavardageNI clavardageNI) {
         this.terminal = terminal;
         this.clavardageNI = clavardageNI;
         this.packetFactory = new PacketFactory();
     }
 
-    public void principal(){
+    /**
+     * Lorsque l'on veut ouvrit une session (ie on est déjà connecté-actif- on cherche le destinataire
+     */
+    public void oppeningSession(){
         boolean open = true;
+        try {
+            terminal.print("Find your clavardage friend. \n Enter his/her/its pseudo :");
+            User user =  clavardageNI.userList.findUserByPseudo(terminal.readLine());
+            terminal.print( "HEY ! You're gonna clavard with : \n"+ user.toString());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
         ActionChooser actionChooser = new ActionChooser(terminal,this);
         do {
             actionChooser.askActionOn(this);
 
         }while(open);
+    }
+
+    public void closingSession(){
+
     }
 
     /**
@@ -38,13 +57,12 @@ public class ChatUI{
      */
     public void onSend() {
         try {
-            System.out.print("Destination IP address : ");
+            terminal.print("Destination IP address : ");
             String ipAddressDest = terminal.readLine();
-            String ipAdressSource = getLocalAdress();
-            System.out.print("Message : ");
+            terminal.print("Message : ");
             String message = terminal.readLine();
 
-            Message monPacketEnvoyer = packetFactory.createPacketMessage(ipAdressSource, ipAddressDest, "totoPseudo", message);
+            Message monPacketEnvoyer = packetFactory.createPacketMessage(getLocalAdress(), ipAddressDest, "totoPseudo", message);
 
             clavardageNI.onSend(monPacketEnvoyer);
             terminal.print(NOTIFICATION_FORMAT);

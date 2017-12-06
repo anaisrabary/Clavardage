@@ -23,4 +23,11 @@ public class User  {
         return "pseudo : " + this.pseudo + ", ip : " + this.ip + "\n" ;
     }
 
+    /**
+     * Pour savoir si le pseudo correspond
+     * @param pattern
+     * @return
+     */
+   // public boolean pseudoMatches(String pattern) { return this.pseudo.toLowerCase().contains(pattern);}
+
 }

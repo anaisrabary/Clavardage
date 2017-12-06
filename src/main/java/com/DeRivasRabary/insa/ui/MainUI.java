@@ -23,6 +23,7 @@ public class MainUI {
 
     private final Terminal terminal;
     private final ChatUI chatUI ;
+    //private final ConnectingUI connectingUI ;
 
     public MainUI(Terminal terminal, ChatUI chatUI) {
         this.terminal = terminal;
@@ -35,11 +36,13 @@ public class MainUI {
         String choice = terminal.readCommand();
         switch (choice) {
             case CONNECT:
+                //connectingUI.connect();
                 break;
             case DISCONNECT:
+               // connectingUI.disconnect();
                 break;
             case OPENNING_SESSION:
-                chatUI.principal();
+                chatUI.oppeningSession();
                 break;
             case CLOSING_SESSION:
                 break;

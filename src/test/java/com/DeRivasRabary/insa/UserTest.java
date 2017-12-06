@@ -83,7 +83,7 @@ public class UserTest extends TestCase {
         userList.userList.add(user2); userList.userList.add(user3);
         User userRequested ;
         try {
-            userRequested = userList.getUserByIp("127.0.0.1");
+            userRequested = userList.findUserByIp("127.0.0.1");
             assertEquals("Jeannot", userRequested.pseudo);
             assertEquals("127.0.0.1", userRequested.ip);
         }
@@ -93,7 +93,7 @@ public class UserTest extends TestCase {
             assertEquals(false,true);
         }
         try {
-            userRequested = userList.getUserByIp("127.0.0.2");
+            userRequested = userList.findUserByIp("127.0.0.2");
             assertEquals("Pierrot", userRequested.pseudo);
             assertEquals("127.0.0.2", userRequested.ip);
         }
@@ -103,7 +103,7 @@ public class UserTest extends TestCase {
             assertEquals(false,true);
         }
         try {
-            userRequested = userList.getUserByIp("127.0.0.3");
+            userRequested = userList.findUserByIp("127.0.0.3");
             assertEquals("Paulo", userRequested.pseudo);
             assertEquals("127.0.0.3", userRequested.ip);
         }
@@ -113,7 +113,7 @@ public class UserTest extends TestCase {
             assertEquals(false,true);
         }
         try {
-            userRequested = userList.getUserByIp("233468766");
+            userRequested = userList.findUserByIp("233468766");
             assertEquals(false,true);
         }
         catch (Exception e){
@@ -132,7 +132,7 @@ public class UserTest extends TestCase {
         User userToFound ;
 
         try {
-        userToFound = userList.getUserByPseudo("Jeannot");
+        userToFound = userList.findUserByPseudo("Jeannot");
         assertEquals("Jeannot",userToFound.pseudo);
         assertEquals("127.0.0.1",userToFound.ip); }
         catch (Exception e){
@@ -142,7 +142,7 @@ public class UserTest extends TestCase {
         }
 
         try{
-        userToFound = userList.getUserByPseudo("Pierrot");
+        userToFound = userList.findUserByPseudo("Pierrot");
         assertEquals("Pierrot",userToFound.pseudo);
         assertEquals("127.0.0.2",userToFound.ip);}
         catch (Exception e){
@@ -152,7 +152,7 @@ public class UserTest extends TestCase {
         }
 
         try {
-            userToFound = userList.getUserByPseudo("Paulo");
+            userToFound = userList.findUserByPseudo("Paulo");
             assertEquals("Paulo", userToFound.pseudo);
             assertEquals("127.0.0.3", userToFound.ip);
         }
@@ -163,7 +163,7 @@ public class UserTest extends TestCase {
         }
 
         try{
-            userToFound = userList.getUserByPseudo("Fred");
+            userToFound = userList.findUserByPseudo("Fred");
             assertEquals("Fred", userToFound.pseudo);
             assertEquals("127.0.0.4", userToFound.ip);
         }
@@ -192,7 +192,7 @@ public class UserTest extends TestCase {
             System.out.println("Exception levée lors de l'update Pseudo by Ip - KO");
         }
         try {
-            userModified = userList.getUserByIp("127.0.0.2");
+            userModified = userList.findUserByIp("127.0.0.2");
         }
         catch (Exception e) {
             e.printStackTrace();

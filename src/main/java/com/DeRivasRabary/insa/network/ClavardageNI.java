@@ -2,11 +2,16 @@ package com.DeRivasRabary.insa.network;
 
 
 import com.DeRivasRabary.insa.network.packet.PacketManager;
+import com.DeRivasRabary.insa.user.UserList;
 
 
 public class ClavardageNI implements IncomingMessageListener{
     private  static final int PORT = 1234;
+    public final UserList userList ; // TODO : supprimer le public et mettre private !!
+
+
     public ClavardageNI(){
+        this.userList = UserList.createInstance();
     }
 
     /**
