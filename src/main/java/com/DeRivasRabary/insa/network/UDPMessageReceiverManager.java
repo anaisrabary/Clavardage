@@ -4,7 +4,7 @@ package com.DeRivasRabary.insa.network;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 
-
+// TODO : Ne doit pas hériter de MessageREceiverService ??
 public class UDPMessageReceiverManager{
     private static final int BUFFER_SIZE = 1000;
     /*private Boolean isRunning = true;
@@ -17,6 +17,12 @@ public class UDPMessageReceiverManager{
     }
 */
 
+    /**
+     * Lance l'écoute sur un port
+     * @param port
+     * @param incomingMessageListener
+     * @throws Exception
+     */
     public void listenOnPort(int port, IncomingMessageListener incomingMessageListener) throws Exception {
         DatagramSocket receiverSocket = new DatagramSocket(port);
         DatagramPacket receiverPacket = new DatagramPacket(new byte[BUFFER_SIZE],BUFFER_SIZE);
@@ -27,6 +33,9 @@ public class UDPMessageReceiverManager{
     }
 
 /*
+    /**
+    * Ferme l'écoute du port
+    * /
     public void close(){
         isRunning = false;
         this.receiverSocket.close();

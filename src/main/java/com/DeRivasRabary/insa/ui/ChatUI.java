@@ -29,6 +29,10 @@ public class ChatUI{
         }while(open);
     }
 
+    /**
+     * Demande à l'utilisateur à quel IP et port envoyer un message
+     * TODO : à transformer en paquet
+     */
     public void onSend() {
         System.out.print("Destination IP address : ");
         String ipAddress = terminal.readLine();

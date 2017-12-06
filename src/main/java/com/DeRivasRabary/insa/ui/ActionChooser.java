@@ -14,6 +14,11 @@ public class ActionChooser {
         this.chatUI = chatUI;
     }
 
+    /**
+     * Demande à l'utilisateur si il veut envoyer ou recevoir un message et execute la bonne commande.
+     * TODO : dans chaque case faire un do while pour rester dans le meme état tant qu'on a pas appuyé sur une touche par exemple
+     * @param chatUI
+     */
     public void askActionOn(ChatUI chatUI) {
         System.out.print("Choose your action [send - receive] : ");
         String choice = terminal.readCommand();
