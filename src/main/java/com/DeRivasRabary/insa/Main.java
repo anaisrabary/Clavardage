@@ -15,15 +15,18 @@ import java.io.IOException;
  */
 public class Main
 {
+
     public static void main(String[] args) throws IOException {
         Terminal terminal = new Terminal();
         ChatUI chatUI = new ChatUI(terminal, new ClavardageNI());
         MainUI mainUI = new MainUI(terminal, chatUI);
         mainUI.askForAction();
-       /* StartingUI startingUI = new StartingUI(terminal, new ActionChooser(terminal), receiveUI, sendUI);
-        startingUI.askForAction();
-        */
+        //StartingUI startingUI = new StartingUI(terminal, new ActionChooser(terminal), receiveUI, sendUI);
+        //startingUI.askForAction();
+
     }
+
+
 }
 
 

@@ -3,8 +3,8 @@ package com.DeRivasRabary.insa.user;
 
 public class User  {
 
-    public String pseudo ;
-    public String ip ;
+    private String pseudo ;
+    private String ip ;
 
 
     /**
@@ -29,5 +29,25 @@ public class User  {
      * @return
      */
    // public boolean pseudoMatches(String pattern) { return this.pseudo.toLowerCase().contains(pattern);}
+
+    /**
+     * Methode pour renvoyer l'@IP d'un utilisateur
+     * @return String
+     */
+    public String getIPAdress (){ return ip;}
+
+    /**
+     * methode pour récupérer le pseudo
+     * @return String
+     */
+    public String getPseudo () { return pseudo ;}
+
+    /**
+     * Méthode pour changer le pseudo
+     * @param newpseudo
+     */
+    public void changePseudo(String newpseudo){
+        this.pseudo = newpseudo ;
+    }
 
 }

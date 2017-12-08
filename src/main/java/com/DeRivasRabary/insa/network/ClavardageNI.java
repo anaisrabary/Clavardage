@@ -1,32 +1,56 @@
 package com.DeRivasRabary.insa.network;
 
 
+import com.DeRivasRabary.insa.network.packet.Hello;
 import com.DeRivasRabary.insa.network.packet.PacketManager;
 import com.DeRivasRabary.insa.user.UserList;
 
+import java.io.IOException;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.util.Enumeration;
 
+import static com.DeRivasRabary.insa.network.ClasseTestReseau.getLocalAdress;
+
 
 public class ClavardageNI implements IncomingMessageListener{
-    private  static final int PORT = 1234;
-    public final UserList userList ; // TODO : supprimer le public et mettre private !!
+    private static final int PORT = 1234;
+    private static final String BROADCAST ="255.255.255.255";
+
+    private static ClavardageNI instance ;
+    private UDPMessageReceiverManager udpMessageReceiverManager;
+    private UDPMessageSenderManager udpMessageSenderManager ;
 
 
     public ClavardageNI(){
-        this.userList = UserList.createInstance();
+        try {
+            this.udpMessageReceiverManager = new UDPMessageReceiverManager(PORT);
+            this.udpMessageSenderManager = new UDPMessageSenderManager() ;
+        }catch (Exception e){
+          e.printStackTrace();
+        }
+
+    }
+
+    public static ClavardageNI createInstance(){
+        if (instance == null) {
+            instance = new ClavardageNI();
+        }
+        return instance;
+    }
+
+    public static ClavardageNI getInstance() {
+        return instance;
     }
 
     /**
      * Envoie un packet sur le réseau
      */
-    public void onSend(PacketManager packet) {
-       UDPMessageSenderManager udpMessageSenderManager = new UDPMessageSenderManager();
+    public void onSend(PacketManager packet, String ipAdressDest) {
        try {
            if ( packet.isPacketMESSAGE())
-            udpMessageSenderManager.sendMessageOn(packet);
-           if (packet.isPacketBYE() || packet.isPacketHELLO()); // TODO !!!
+            udpMessageSenderManager.sendMessageOn(packet, ipAdressDest);
+           if (packet.isPacketBYE() || packet.isPacketHELLO()); // TODO  : utile ?
 
        }catch (Exception e){
            e.printStackTrace();
@@ -40,7 +64,6 @@ public class ClavardageNI implements IncomingMessageListener{
      */
     public void onReceive() throws Exception{
         try {
-            UDPMessageReceiverManager udpMessageReceiverManager = new UDPMessageReceiverManager(PORT);
             udpMessageReceiverManager.listenOnPort(PORT,this ) ;
             udpMessageReceiverManager.close();
 
@@ -51,6 +74,9 @@ public class ClavardageNI implements IncomingMessageListener{
         }
     }
 
+    public void stop() throws Exception{
+        udpMessageReceiverManager.close();
+    }
     /**
      * Affiche un message reçu
      *  @param packet
@@ -83,6 +109,15 @@ public class ClavardageNI implements IncomingMessageListener{
 
     //TODO : Récupérer la liste des utilisateurs sur le réseau et faire.
     // Methode "onConnect"
+    public void onConnect(){
+        Hello hello = new Hello(getLocalAdress(),"255.255.255.255","totoPseudo", true);
+        try {
+            udpMessageSenderManager.sendMessageOn(hello,BROADCAST);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
 
 
     // TODO : supprimer celle de test Reseaux

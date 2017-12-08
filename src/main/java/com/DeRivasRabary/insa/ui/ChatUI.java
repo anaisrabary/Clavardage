@@ -35,7 +35,7 @@ public class ChatUI{
         boolean open = true;
         try {
             terminal.print("Find your clavardage friend. \n Enter his/her/its pseudo :");
-            User user =  clavardageNI.userList.findUserByPseudo(terminal.readLine()); //TODO : check why l'exception n'est pas levée si on trouve pas l'utilisateur...
+            User user =  UserList.getInstance().findUserByPseudo(terminal.readLine()); //TODO : check why l'exception n'est pas levée si on trouve pas l'utilisateur...
             terminal.print( "HEY ! You're gonna clavard with : \n"+ user.toString());
         }catch (Exception e){
             e.printStackTrace();
@@ -66,7 +66,7 @@ public class ChatUI{
 
             Message monPacketEnvoyer = packetFactory.createPacketMessage(getLocalAdress(), ipAddressDest, "totoPseudo", message);
 
-            clavardageNI.onSend(monPacketEnvoyer);
+            clavardageNI.onSend(monPacketEnvoyer,ipAddressDest);
             terminal.print(NOTIFICATION_FORMAT);
             terminal.print(monPacketEnvoyer.toString());
         }catch (Exception e){

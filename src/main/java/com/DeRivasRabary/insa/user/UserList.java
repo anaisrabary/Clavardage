@@ -24,6 +24,8 @@ public class UserList {
         return instance;
     }
 
+    // TODO : Si on veut être cohérent il faut que User List soit un HASMAP !!!! :)
+
 
     /** Constructeur ()
      * */
@@ -47,6 +49,7 @@ public class UserList {
     public UserList(ArrayList<User> listeUser){
         this.userList=listeUser;
     }
+    public ArrayList<User> getUserList() { return  userList ;}
 
     /*
         Créer un constructeur qui peut prendre aussi bien 0 que n utilisateurs
@@ -54,6 +57,11 @@ public class UserList {
 
     // TODO : méthode ADD User
     // TODO : Méthode ADD liste Users (Concaténation)
+
+
+    public static UserList getInstance() {
+        return instance;
+    }
 
     /**
      * Méthode qui renvoie si il existe, l'utilisateur connaissant son Ip
@@ -68,7 +76,7 @@ public class UserList {
         boolean trouve = false ;
         while(it.hasNext() & !trouve) {
             current = it.next();
-            if (current.ip == ip){
+            if (current.getIPAdress()== ip){
                 trouve = true ;
                 foundUser=current;
             }
@@ -110,7 +118,7 @@ public class UserList {
         boolean trouve = false ;
         while(it.hasNext() & !trouve) {
             current = it.next();
-            if (current.pseudo == pseudo){
+            if (current.getPseudo() == pseudo){
                 trouve = true ;
                 foundUser=current;
             }
@@ -135,13 +143,13 @@ public class UserList {
         boolean trouve = false ;
         while(it.hasNext() & !trouve) {
             current = it.next();
-            if (current.ip == ip){
+            if (current.getIPAdress() == ip){
                 trouve = true ;
-                current.pseudo=newPseudo;
+                current.changePseudo(newPseudo);
             }
         }
         if (!trouve){
-            throw new UtilisateurNonTrouve("Pas d'utilisateur portant cet IP");
+            throw new UtilisateurNonTrouve("Pas d'utilisateur avec cet IP");
         }
     }
 
