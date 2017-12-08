@@ -15,7 +15,7 @@ public abstract class PacketManager {
     public String ipReceiver ;
     public String pseudo ;
     public String date ;
-    public TypePacket type ;
+    private TypePacket type ;
 
     /**
      * Constructeur de paquet commun à hello-bye-message

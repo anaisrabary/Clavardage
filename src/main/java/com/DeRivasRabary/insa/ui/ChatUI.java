@@ -30,10 +30,12 @@ public class ChatUI{
      * Lorsque l'on veut ouvrit une session (ie on est déjà connecté-actif- on cherche le destinataire
      */
     public void oppeningSession(){
+
+        // TODO : pour vraiment ouvrir une connection avec quelqu'un: l'emetteur doit faire un Hello au recepteur et le récepteur doit écouter.
         boolean open = true;
         try {
             terminal.print("Find your clavardage friend. \n Enter his/her/its pseudo :");
-            User user =  clavardageNI.userList.findUserByPseudo(terminal.readLine());
+            User user =  clavardageNI.userList.findUserByPseudo(terminal.readLine()); //TODO : check why l'exception n'est pas levée si on trouve pas l'utilisateur...
             terminal.print( "HEY ! You're gonna clavard with : \n"+ user.toString());
         }catch (Exception e){
             e.printStackTrace();
@@ -57,7 +59,7 @@ public class ChatUI{
      */
     public void onSend() {
         try {
-            terminal.print("Destination IP address : ");
+            terminal.print("Destination IP address : "); // TODO : récuperer l'info du User trouvé
             String ipAddressDest = terminal.readLine();
             terminal.print("Message : ");
             String message = terminal.readLine();

@@ -16,6 +16,7 @@ public class UDPMessageSenderManager implements MessageSenderService{
      * @param packet
      * @throws Exception
      */
+    // TODO : Repasser les IP en parametres (pour ne pas les récupérer du packet)
     @Override
     public void sendMessageOn(PacketManager packet) throws Exception {
         DatagramSocket senderSocket = new DatagramSocket();

@@ -4,6 +4,10 @@ package com.DeRivasRabary.insa.network;
 import com.DeRivasRabary.insa.network.packet.PacketManager;
 import com.DeRivasRabary.insa.user.UserList;
 
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.util.Enumeration;
+
 
 public class ClavardageNI implements IncomingMessageListener{
     private  static final int PORT = 1234;
@@ -32,7 +36,6 @@ public class ClavardageNI implements IncomingMessageListener{
 
     /**
      * Reçoit un message du réseau
-     * TODO : gérer la fermeture d'écoute car si on veut écouter plusieurs fois on a une exception. (méthode close que tu as commenté dans UDPMessage Receiver Manager)
      * @throws Exception
      */
     public void onReceive() throws Exception{
@@ -50,9 +53,6 @@ public class ClavardageNI implements IncomingMessageListener{
 
     /**
      * Affiche un message reçu
-     * TODO : remplacer message par paquet et dans l'affichage tu peux juste faire paquet.toString().
-     * TODO : c'est pas si simple que ça.. je ne sais pas comment dire que ce que je reçois d'un UDP (des byte) c'est un packet et pas un String....
-     * TODO : ça s'affiche comme on veut en tout cas
      *  @param packet
      */
     @Override
@@ -70,6 +70,7 @@ public class ClavardageNI implements IncomingMessageListener{
      * **/
 
     // TODO : par rapport à l'idée PeerToPeer, Si un utilisateur découvre une information avant les autres, il la partage.
+    // dans le cas où il est parti sans dire au-revoir par exemple...
     /**
      * En gros je découvre qu'un utilisateur n'est plus actif, j'envoie un paquet d'information (comme un ICMP) à tout le monde
      * qui dit en gros "Machin n'est plus sur le réseau". A voir...
@@ -80,9 +81,34 @@ public class ClavardageNI implements IncomingMessageListener{
      * Envoyer pseudo choisi sur le réseau et demander aux autres de nous reply si ils l'utilisent ou pas
      */
 
-    //TODO : Récupérer la liste des utilisateurs sur le réseau et faire une Hashmap
+    //TODO : Récupérer la liste des utilisateurs sur le réseau et faire.
+    // Methode "onConnect"
 
 
+    // TODO : supprimer celle de test Reseaux
+    public static String getLocalAdress() {
+        try
+        {
+            boolean trouve = false;
+            String ip = "" ;
+            Enumeration<NetworkInterface> e = NetworkInterface.getNetworkInterfaces();
+            while (!trouve || e.hasMoreElements()) {
+                Enumeration<InetAddress> i = e.nextElement().getInetAddresses();
+                while (i.hasMoreElements()) {
+                    InetAddress a = i.nextElement();
+                    if (a.isSiteLocalAddress()) {
+                        trouve = true;
+                        ip=a.getHostAddress();
+                    }
+                }
+            }
+            return ip ;
+        } catch (Exception e){
+            System.err.println("Erreur dans getLocalAdress. Impossible de trouver ip privée locale.\n" +
+                    "Etes vous bien connecté au réseau ?");
+            return "";
+        }
+    }
 
 
 }

@@ -23,9 +23,15 @@ public class UserList {
         }
         return instance;
     }
+
+
+    /** Constructeur ()
+     * */
     public UserList(){
         this.userList = new ArrayList<User>();
     }
+
+
     /** Constructeur qui rajoute qu'un utilisateur à la liste
      * TODO : Supprimez moi ce constructeur !!!
      * */
@@ -36,7 +42,7 @@ public class UserList {
 
 
     /** Constructeur qui rajoute plusieurs utilisateurs à la liste
-     * TODO : celui là aussi ( à remplacer pourquoi pas par une méthode qui permet d'ajouter une liste de user #concaténation
+     * TODO : celui là aussi ( à remplacer pourquoi pas par une méthode qui permet d'ajouter une liste de user #concaténation)
      * */
     public UserList(ArrayList<User> listeUser){
         this.userList=listeUser;
@@ -46,6 +52,8 @@ public class UserList {
         Créer un constructeur qui peut prendre aussi bien 0 que n utilisateurs
      */
 
+    // TODO : méthode ADD User
+    // TODO : Méthode ADD liste Users (Concaténation)
 
     /**
      * Méthode qui renvoie si il existe, l'utilisateur connaissant son Ip
@@ -139,12 +147,13 @@ public class UserList {
 
 
     /**
-     * TODO : je ne comprends pas à quoi sert message...
+     * Methode qui affiche la liste des utilisateurs
      * @return
      */
     @Override
     public String toString(){
         String message = "" ;
+        // TODO metre un separateur
         for (User u: this.userList) {
             message = message + u.toString();
         }
