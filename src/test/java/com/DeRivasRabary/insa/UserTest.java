@@ -16,8 +16,8 @@ public class UserTest extends TestCase {
 
     public void testUserCreation(){
         User user = new User("Jeannot","127.0.0.1");
-        assertEquals("Jeannot", user.pseudo);
-        assertEquals("127.0.0.1",user.ip);
+        assertEquals("Jeannot", user.getPseudo());
+        assertEquals("127.0.0.1",user.getIPAdress());
     }
 
 
@@ -29,8 +29,8 @@ public class UserTest extends TestCase {
 
     public void testLocalUserCreation(){
         LocalUser localUser = new LocalUser("Anaisseee","127.0.0.2",true);
-        assertEquals("Anaisseee",localUser.pseudo);
-        assertEquals("127.0.0.2",localUser.ip);
+        assertEquals("Anaisseee",localUser.getPseudo());
+        assertEquals("127.0.0.2",localUser.getIPAdress());
         assertEquals(true,localUser.actif);
     }
 
@@ -84,8 +84,8 @@ public class UserTest extends TestCase {
         User userRequested ;
         try {
             userRequested = userList.findUserByIp("127.0.0.1");
-            assertEquals("Jeannot", userRequested.pseudo);
-            assertEquals("127.0.0.1", userRequested.ip);
+            assertEquals("Jeannot", userRequested.getPseudo());
+            assertEquals("127.0.0.1", userRequested.getIPAdress());
         }
         catch (Exception e){
             e.printStackTrace();
@@ -94,8 +94,8 @@ public class UserTest extends TestCase {
         }
         try {
             userRequested = userList.findUserByIp("127.0.0.2");
-            assertEquals("Pierrot", userRequested.pseudo);
-            assertEquals("127.0.0.2", userRequested.ip);
+            assertEquals("Pierrot", userRequested.getPseudo());
+            assertEquals("127.0.0.2", userRequested.getIPAdress());
         }
         catch (Exception e){
             e.printStackTrace();
@@ -104,8 +104,8 @@ public class UserTest extends TestCase {
         }
         try {
             userRequested = userList.findUserByIp("127.0.0.3");
-            assertEquals("Paulo", userRequested.pseudo);
-            assertEquals("127.0.0.3", userRequested.ip);
+            assertEquals("Paulo", userRequested.getPseudo());
+            assertEquals("127.0.0.3", userRequested.getIPAdress());
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -133,8 +133,8 @@ public class UserTest extends TestCase {
 
         try {
         userToFound = userList.findUserByPseudo("Jeannot");
-        assertEquals("Jeannot",userToFound.pseudo);
-        assertEquals("127.0.0.1",userToFound.ip); }
+        assertEquals("Jeannot",userToFound.getPseudo());
+        assertEquals("127.0.0.1",userToFound.getIPAdress()); }
         catch (Exception e){
             e.printStackTrace();
             System.out.println("Exception sur GetUserByPseudo pour le premier User - KO ");
@@ -143,8 +143,8 @@ public class UserTest extends TestCase {
 
         try{
         userToFound = userList.findUserByPseudo("Pierrot");
-        assertEquals("Pierrot",userToFound.pseudo);
-        assertEquals("127.0.0.2",userToFound.ip);}
+        assertEquals("Pierrot",userToFound.getPseudo());
+        assertEquals("127.0.0.2",userToFound.getIPAdress());}
         catch (Exception e){
             e.printStackTrace();
             System.out.println("Exception sur GetUserByPseudo pour le deuxieme User - KO ");
@@ -153,8 +153,8 @@ public class UserTest extends TestCase {
 
         try {
             userToFound = userList.findUserByPseudo("Paulo");
-            assertEquals("Paulo", userToFound.pseudo);
-            assertEquals("127.0.0.3", userToFound.ip);
+            assertEquals("Paulo", userToFound.getPseudo());
+            assertEquals("127.0.0.3", userToFound.getIPAdress());
         }
         catch (Exception e){
             e.printStackTrace();
@@ -164,8 +164,8 @@ public class UserTest extends TestCase {
 
         try{
             userToFound = userList.findUserByPseudo("Fred");
-            assertEquals("Fred", userToFound.pseudo);
-            assertEquals("127.0.0.4", userToFound.ip);
+            assertEquals("Fred", userToFound.getPseudo());
+            assertEquals("127.0.0.4", userToFound.getIPAdress());
         }
         catch (Exception e){
             e.printStackTrace();
@@ -198,7 +198,7 @@ public class UserTest extends TestCase {
             e.printStackTrace();
             System.out.println("Exception levée lors de l'update Pseudo by Ip - KO");
         }
-        assertEquals("Fred",userModified.pseudo);
+        assertEquals("Fred",userModified.getPseudo());
 
         /* Cas où l'utilisateur n'existe pas */
         try{
