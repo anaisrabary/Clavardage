@@ -27,4 +27,11 @@ public class Bye extends PacketManager {
         return delimiter+ type + ipsender + ipreceiver + date + pseudo + delimiter ;
     }
 
+    public String toDisplaySend(){
+        String type = "Type : Bye\n";
+        String date = "Date : " + this.date + "\n";
+        String pseudo = "Pseudo : " + this.pseudo + "\n" ;
+        return type + date + pseudo;
+    }
+
 }

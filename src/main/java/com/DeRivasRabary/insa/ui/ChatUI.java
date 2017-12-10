@@ -35,7 +35,7 @@ public class ChatUI{
         boolean open = true;
         try {
             terminal.print("Find your clavardage friend. \n Enter his/her/its pseudo :");
-            User user =  UserList.getInstance().findUserByPseudo(terminal.readLine()); //TODO : check why l'exception n'est pas levée si on trouve pas l'utilisateur...
+            User user =  UserList.getInstance().findUserByPseudoExact(terminal.readLine()); //TODO : check why l'exception n'est pas levée si on trouve pas l'utilisateur...
             terminal.print( "HEY ! You're gonna clavard with : \n"+ user.toString());
         }catch (Exception e){
             e.printStackTrace();

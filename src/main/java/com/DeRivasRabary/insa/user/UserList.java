@@ -9,6 +9,7 @@ import java.util.ListIterator;
 import java.util.StringJoiner;
 import java.util.stream.Collectors;
 
+// TODO : Si on veut être cohérent il faut que User List soit un HASMAP !!!! :) Refactor lourd et long à faire
 public class UserList {
 
     public ArrayList<User> userList ;
@@ -24,7 +25,6 @@ public class UserList {
         return instance;
     }
 
-    // TODO : Si on veut être cohérent il faut que User List soit un HASMAP !!!! :)
 
 
     /** Constructeur ()
@@ -34,29 +34,22 @@ public class UserList {
     }
 
 
-    /** Constructeur qui rajoute qu'un utilisateur à la liste
-     * TODO : Supprimez moi ce constructeur !!!
-     * */
-    public UserList(User user){
-        userList = new ArrayList<User>();
-        userList.add(user);
-    }
-
-
-    /** Constructeur qui rajoute plusieurs utilisateurs à la liste
-     * TODO : celui là aussi ( à remplacer pourquoi pas par une méthode qui permet d'ajouter une liste de user #concaténation)
-     * */
-    public UserList(ArrayList<User> listeUser){
-        this.userList=listeUser;
-    }
     public ArrayList<User> getUserList() { return  userList ;}
 
-    /*
-        Créer un constructeur qui peut prendre aussi bien 0 que n utilisateurs
-     */
 
-    // TODO : méthode ADD User
-    // TODO : Méthode ADD liste Users (Concaténation)
+
+    public void addUser(User user){
+        this.userList.add(user);
+    }
+
+    public void addUserList(ArrayList<User> userList){
+        ListIterator<User> it = userList.listIterator();
+        while(it.hasNext()){
+            this.userList.add(it.next());
+        }
+    }
+
+
 
 
     public static UserList getInstance() {
@@ -88,12 +81,12 @@ public class UserList {
     }
 
     /**
-     * Récupère l'user connaissant le pseudo d'un utilisateur
+     * Récupère l'user connaissant le pseudo d'un utilisateur exact
      * @param pseudo
      * @return User
      * @throws UtilisateurNonTrouve
      */
-    public User findUserByPseudo(String pseudo) throws UtilisateurNonTrouve, BeMoreSpecificWithThePeudo {
+    public User findUserByPseudoExact(String pseudo) throws UtilisateurNonTrouve, BeMoreSpecificWithThePeudo {
 
         /* TODO : autre alternative qui ne marche pas ... mais il faudrait pouvoir trouver quelqu'un ne connaissant qu'une partie de son pseudo..
         List<User> matchingUsers = userList.stream()
@@ -127,8 +120,29 @@ public class UserList {
 
         }
         return foundUser;
-
     }
+
+    /**
+     * Récupère l'user connaissant le pseudo d'un utilisateur sans qu'il soit exact
+     * @param partPseudo
+     * @return ArrayList<User>
+     * @throws UtilisateurNonTrouve
+     */
+    public ArrayList<User> findListUserByPseudo(String partPseudo) throws UtilisateurNonTrouve {
+
+        ListIterator<User> it = userList.listIterator();
+        User current ;
+        ArrayList<User> list = new ArrayList<>();
+
+        while(it.hasNext()) {
+            current = it.next();
+            if (current.getPseudo().contains(partPseudo)){
+                list.add(current);
+            }
+        }
+        return list;
+    }
+
 
 
     /**
@@ -161,7 +175,7 @@ public class UserList {
     @Override
     public String toString(){
         String message = "" ;
-        // TODO metre un separateur
+        // TODO metre un separateur -> ça va a la ligne y'a un souci ? Facile à changer si besoin
         for (User u: this.userList) {
             message = message + u.toString();
         }

@@ -37,6 +37,8 @@ public abstract class PacketManager {
         return DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM);
     }
 
+    // TODO : les méthodes isPacketMachin ne servent pas car on reçoit un string de l'autre coté. Dans ces méthodes il faut récupérer le type dans la première ligne du paquet.
+
     /**
      * Méthode qui affirme si le packet est un MESSAGE
      * @return Boolean
@@ -63,5 +65,25 @@ public abstract class PacketManager {
      */
     public String getIpReceiver() { return  ipReceiver; }
 
+    public static Boolean isPacketMESSAGE2 (String message){
+        if (message.contains("Type : Message")){
+            return true ;
+        }
+        return false ;
+    }
+
+    public static Boolean isPacketHELLO2 (String message){
+        if (message.contains("Type : Hello")){
+            return true ;
+        }
+        return false ;
+    }
+
+    public static Boolean isPacketBYE2 (String message){
+        if (message.contains("Type : Bye")){
+            return true ;
+        }
+        return false ;
+    }
 
 }

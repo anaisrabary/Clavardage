@@ -35,4 +35,12 @@ public class Message extends PacketManager{
         return delimiter + type + ipsender + ipreceiver + date + pseudo + message + delimiter ;
     }
 
+    public String toDisplaySend(){
+        String type = "Type : Message\n";
+        String date = "Date : " + this.date + "\n";
+        String pseudo = "Pseudo : " + this.pseudo + "\n" ;
+        String message = "Message : " + this.message +"\n" ;
+        return type + date + pseudo + message;
+    }
+
 }

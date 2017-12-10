@@ -32,5 +32,12 @@ public class Hello extends PacketManager {
         return delimiter + type + ipsender + ipreceiver + date + pseudo + replyrec + delimiter ;
     }
 
+    public String toDisplaySend(){
+        String type = "Type : Hello\n";
+        String date = "Date : " + this.date + "\n";
+        String pseudo = "Pseudo : " + this.pseudo + "\n" ;
+        String replyrec = "ReplyRec : " + Boolean.toString(this.replyRec) +"\n" ;
+        return type + date + pseudo + replyrec;
+    }
 
 }

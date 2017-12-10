@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class UserTest extends TestCase {
 
-
+    /*
     public void testUserCreation(){
         User user = new User("Jeannot","127.0.0.1");
         assertEquals("Jeannot", user.getPseudo());
@@ -50,6 +50,7 @@ public class UserTest extends TestCase {
         String message = listeUser.toString();
         assertEquals("[pseudo : Jeannot, ip : 127.0.0.1\n, pseudo : Pierrot, ip : 127.0.0.2\n, pseudo : Paulo, ip : 127.0.0.3\n]",message);
     }
+
 
     public void testCreateUserListWithOneUserEachTime(){
         User user = new User("Jeannot","127.0.0.1");
@@ -132,7 +133,7 @@ public class UserTest extends TestCase {
         User userToFound ;
 
         try {
-        userToFound = userList.findUserByPseudo("Jeannot");
+        userToFound = userList.findUserByPseudoExact("Jeannot");
         assertEquals("Jeannot",userToFound.getPseudo());
         assertEquals("127.0.0.1",userToFound.getIPAdress()); }
         catch (Exception e){
@@ -142,7 +143,7 @@ public class UserTest extends TestCase {
         }
 
         try{
-        userToFound = userList.findUserByPseudo("Pierrot");
+        userToFound = userList.findUserByPseudoExact("Pierrot");
         assertEquals("Pierrot",userToFound.getPseudo());
         assertEquals("127.0.0.2",userToFound.getIPAdress());}
         catch (Exception e){
@@ -152,7 +153,7 @@ public class UserTest extends TestCase {
         }
 
         try {
-            userToFound = userList.findUserByPseudo("Paulo");
+            userToFound = userList.findUserByPseudoExact("Paulo");
             assertEquals("Paulo", userToFound.getPseudo());
             assertEquals("127.0.0.3", userToFound.getIPAdress());
         }
@@ -163,7 +164,7 @@ public class UserTest extends TestCase {
         }
 
         try{
-            userToFound = userList.findUserByPseudo("Fred");
+            userToFound = userList.findUserByPseudoExact("Fred");
             assertEquals("Fred", userToFound.getPseudo());
             assertEquals("127.0.0.4", userToFound.getIPAdress());
         }
@@ -173,9 +174,9 @@ public class UserTest extends TestCase {
             assertEquals(true,true);
         }
     }
+    */
 
-
-
+    /*
     public void testUpdatePseudoByIp(){
         User user1 = new User("Jeannot","127.0.0.1");
         User user2 = new User("Pierrot","127.0.0.2");
@@ -183,7 +184,7 @@ public class UserTest extends TestCase {
         UserList userList = new UserList(user1);
         userList.userList.add(user2); userList.userList.add(user3);
         User userModified = new User("","") ;
-        /* Cas où un utilisateur existe */
+        // Cas où un utilisateur existe
         try {
             userList.updatePseudobyIp("127.0.0.2", "Fred");
         }
@@ -200,7 +201,7 @@ public class UserTest extends TestCase {
         }
         assertEquals("Fred",userModified.getPseudo());
 
-        /* Cas où l'utilisateur n'existe pas */
+        // Cas où l'utilisateur n'existe pas
         try{
             userList.updatePseudobyIp("127.0.0.4","boo");
             assertEquals("false", "true");
@@ -208,6 +209,24 @@ public class UserTest extends TestCase {
         catch (Exception e){
             e.printStackTrace();
             assertEquals("true","true");
+        }
+    }
+    */
+
+    public static void main(String[] args) {
+        User user1 = new User("Jeannot","127.0.0.1");
+        User user2 = new User("Pierrot","127.0.0.2");
+        User user3 = new User("Paulo", "127.0.0.3");
+        UserList list = new UserList() ;
+        list.addUser(user1);
+        list.addUser(user2);
+        list.addUser(user3);
+        try {
+            ArrayList<User> marecherche = list.findListUserByPseudo("ot");
+            System.out.println(marecherche.toString());
+        }
+        catch (Exception e){
+            System.err.println("On rentre dans une erreur dans le findListUserByPseudo");
         }
     }
 }
