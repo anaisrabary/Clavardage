@@ -3,6 +3,7 @@ package com.DeRivasRabary.insa.network;
 
 import com.DeRivasRabary.insa.network.packet.Hello;
 import com.DeRivasRabary.insa.network.packet.PacketManager;
+import com.DeRivasRabary.insa.network.packet.TypePacket;
 import com.DeRivasRabary.insa.user.UserList;
 
 import java.io.IOException;
@@ -10,7 +11,6 @@ import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.util.Enumeration;
 
-import static com.DeRivasRabary.insa.network.ClasseTestReseau.getLocalAdress;
 
 
 public class ClavardageNI implements IncomingMessageListener{
@@ -57,6 +57,7 @@ public class ClavardageNI implements IncomingMessageListener{
        }
 
     }
+
 
     /**
      * Reçoit un message du réseau

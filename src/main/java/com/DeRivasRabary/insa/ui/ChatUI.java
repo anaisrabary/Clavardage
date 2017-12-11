@@ -7,8 +7,8 @@ import com.DeRivasRabary.insa.ui.infrastructure.Terminal;
 import com.DeRivasRabary.insa.user.User;
 import com.DeRivasRabary.insa.user.UserList;
 
+import static com.DeRivasRabary.insa.network.ClavardageNI.getLocalAdress;
 
-import static com.DeRivasRabary.insa.network.ClasseTestReseau.getLocalAdress;
 
 public class ChatUI{
     private static final String ERROR_MESSAGE = "[ERROR] An error occured while trying to listen on port";

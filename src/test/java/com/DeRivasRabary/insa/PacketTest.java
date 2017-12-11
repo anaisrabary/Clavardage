@@ -9,6 +9,7 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 import java.util.Date;
+import java.util.Scanner;
 
 /**
  * Unit test for simple App.
@@ -82,5 +83,14 @@ public class PacketTest extends TestCase {
                         "ReplyRec : true\n" +
                         "******************************\n"
                         ,helloMessage.toString());
+    }
+
+    // TODO : Essayer de transformer un string en paquet
+    public static void main(String[] args) {
+        Message packetMessage = new PacketFactory().createPacketMessage(
+                "192.168.0.1","192.168.0.2","Jeannot","HelloWorld");
+        String packetstring = packetMessage.toString();
+        Scanner sc = new Scanner(packetstring);
+        System.out.println(sc.Next());
     }
 }
