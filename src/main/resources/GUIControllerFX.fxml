@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.DeRivasRabary.insa.ui.testAppliFX.GUIControllerFX"
+            prefHeight="400.0" prefWidth="900.0">
+    <children>
+        <Pane layoutY="-1.0" prefHeight="36.0" prefWidth="850.0" style="-fx-background-color: #313131;">
+            <children>
+                <Label fx:id="labelNomUtilisateur" layoutX="149.0" layoutY="11.0" text="null" textFill="WHITE">
+                    <font>
+                        <Font name="Calibri" size="14.0" />
+                    </font>
+                </Label>
+                <Text fill="WHITE" fontSmoothingType="LCD" layoutX="16.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Connecté en tant que :" textAlignment="CENTER">
+                    <font>
+                        <Font name="Calibri" size="14.0" />
+                    </font>
+                </Text>
+            </children>
+        </Pane>
+        <SplitPane dividerPositions="0.29797979797979796" layoutY="34.0" prefHeight="366.0" prefWidth="850.0" style="-fx-background-color: #F9FAFA;">
+            <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                    <children>
+
+                        <ScrollPane layoutX="6.0" layoutY="27.0" prefHeight="334.0" prefWidth="236.0">
+                            <content>
+                                <TextFlow fx:id="contacts" prefHeight="327.0" prefWidth="230.0" />
+                            </content></ScrollPane>
+                        <Text layoutX="16.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Utilisateurs connectés :" wrappingWidth="236.0">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Text>
+                    </children>
+                </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                    <children>
+                        <AnchorPane layoutX="23.0" layoutY="61.0">
+                            <children>
+                                <ScrollPane layoutX="-17.0" layoutY="-8.0" prefHeight="215.0" prefWidth="577.0">
+                                    <content>
+                                        <TextFlow fx:id="conversationEnCours" prefHeight="167.0" prefWidth="536.0" />
+                                    </content>
+                                </ScrollPane>
+                            </children>
+                        </AnchorPane>
+                        <TextArea fx:id="textInput" layoutX="12.0" layoutY="285.0" prefHeight="61.0" prefWidth="501.0" wrapText="true" />
+                        <Button fx:id="sendButton" layoutX="516.0" layoutY="303.0" mnemonicParsing="false" onAction="#onSendButtonClicked" text="Envoyer" />
+                        <Text fx:id="nomUserCourant" layoutX="185.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aucun utilisateur sélectionné" textAlignment="CENTER" wrappingWidth="193.26171875">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Text>
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
+
+
+</AnchorPane>
