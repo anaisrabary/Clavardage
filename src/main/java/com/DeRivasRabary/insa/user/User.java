@@ -50,4 +50,8 @@ public class User  {
         this.pseudo = newpseudo ;
     }
 
+    public String hashFunction(){
+        return getIPAdress();
+    }
+
 }
