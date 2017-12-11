@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 // TODO : Si on veut être cohérent il faut que User List soit un HASMAP !!!! :) Refactor lourd et long à faire
 public class UserList {
 
+
     public ArrayList<User> userList ;
 
 
@@ -88,21 +89,6 @@ public class UserList {
      */
     public User findUserByPseudoExact(String pseudo) throws UtilisateurNonTrouve, BeMoreSpecificWithThePeudo {
 
-        /* TODO : autre alternative qui ne marche pas ... mais il faudrait pouvoir trouver quelqu'un ne connaissant qu'une partie de son pseudo..
-        List<User> matchingUsers = userList.stream()
-                .filter(user -> user.pseudoMatches(pseudo))
-                .collect(Collectors.toList());
-        if (matchingUsers.size() > 0) {
-            matchingUsers.forEach(this::print);
-        } else {
-            throw new UtilisateurNonTrouve("Pas d'utilisateur portant ce pseudo : " + pseudo);
-        }
-        if (matchingUsers.size() == 1)
-            return matchingUsers.get(0);
-        else
-            throw new BeMoreSpecificWithThePeudo("soyez plus précis dans votre recherche");
-        */
-
         ListIterator<User> it = userList.listIterator();
         User current ;
         User foundUser = new User("","") ;
@@ -175,20 +161,27 @@ public class UserList {
     @Override
     public String toString(){
         String message = "" ;
-        // TODO metre un separateur -> ça va a la ligne y'a un souci ? Facile à changer si besoin
         for (User u: this.userList) {
             message = message + u.toString();
         }
         return message ;
     }
 
-    /**
-     * Alternative pour faire un toString
-     * @param user
-     */
-    private void print(User user) {
-        StringJoiner stringJoiner = new StringJoiner(", ");
-        stringJoiner.add(user.toString());
-        System.out.println(stringJoiner.toString());
-    }
 }
+
+
+        /* TODO : A supprimer à priroi
+         autre alternative qui ne marche pas ... mais il faudrait pouvoir trouver quelqu'un ne connaissant qu'une partie de son pseudo..
+        List<User> matchingUsers = userList.stream()
+                .filter(user -> user.pseudoMatches(pseudo))
+                .collect(Collectors.toList());
+        if (matchingUsers.size() > 0) {
+            matchingUsers.forEach(this::print);
+        } else {
+            throw new UtilisateurNonTrouve("Pas d'utilisateur portant ce pseudo : " + pseudo);
+        }
+        if (matchingUsers.size() == 1)
+            return matchingUsers.get(0);
+        else
+            throw new BeMoreSpecificWithThePeudo("soyez plus précis dans votre recherche");
+        */

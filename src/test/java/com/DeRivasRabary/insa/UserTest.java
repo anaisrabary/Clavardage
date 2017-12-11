@@ -3,6 +3,7 @@ package com.DeRivasRabary.insa;
 import com.DeRivasRabary.insa.user.LocalUser;
 import com.DeRivasRabary.insa.user.User;
 import com.DeRivasRabary.insa.user.UserList;
+import com.DeRivasRabary.insa.user.UserListMap;
 import junit.framework.TestCase;
 
 import java.util.ArrayList;
@@ -213,21 +214,37 @@ public class UserTest extends TestCase {
     }
     */
 
+    public void testUserListMap(){
+
+    }
+
     public static void main(String[] args) {
         User user1 = new User("Jeannot","127.0.0.1");
         User user2 = new User("Pierrot","127.0.0.2");
         User user3 = new User("Paulo", "127.0.0.3");
-        UserList list = new UserList() ;
-        list.addUser(user1);
-        list.addUser(user2);
-        list.addUser(user3);
+        UserListMap listMap = UserListMap.createInstance() ;
+        listMap.addUser(user1); listMap.addUser(user2); listMap.addUser(user3);
+        System.out.println("Affichage des users : ");
+        System.out.println(listMap.toString());
+        System.out.println("recherche user 127.0.0.1");
         try {
-            ArrayList<User> marecherche = list.findListUserByPseudo("ot");
-            System.out.println(marecherche.toString());
+            User u1 = listMap.findUserByIp("127.0.0.1");
+            System.out.println(u1.toString());
+            listMap.updatePseudobyIp("127.0.0.3", "fred");
+            System.out.println("127.0.0.1 a pour nouveau pseudo fred");
+            System.out.println(listMap.toString());
+            System.out.println("******");
+            ArrayList<User> users = listMap.findListUserByPseudo("fred");
+            System.out.println(users.toString());
         }
-        catch (Exception e){
-            System.err.println("On rentre dans une erreur dans le findListUserByPseudo");
+        catch (Exception e) {
+            System.err.println("utilisateur pas trouvé");
         }
+
+
+
+
+
     }
 }
 
