@@ -45,7 +45,7 @@ public class MainGUIFX extends Application {
         this.connexionStage=new Stage();
 
         initConnexion();
-        //initLayout();
+        initLayout();
 
         connexionStage.show();
 
@@ -59,7 +59,7 @@ public class MainGUIFX extends Application {
     public void initConnexion() {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/ConnectionPanel.fxml"));
-            connexionStage.setTitle("Chat System");
+            connexionStage.setTitle("Chat System conect");
             connexionStage.setScene(new Scene(root, 400, 200));
         } catch (IOException e) {
             e.printStackTrace();
@@ -69,7 +69,7 @@ public class MainGUIFX extends Application {
 
     public void initLayout() {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/GUIController.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/GUIControllerFX.fxml"));
             Platform.runLater( ( () -> primaryStage.setTitle("Chat System")));
             Platform.runLater( ( () ->primaryStage.setScene(new Scene(root, 850, 400))));
         } catch (IOException e) {

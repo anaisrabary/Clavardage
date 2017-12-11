@@ -9,7 +9,7 @@
             fx:controller="com.DeRivasRabary.insa.ui.testAppliFX.GUIControllerFX"
             prefHeight="400.0" prefWidth="900.0">
     <children>
-        <Pane layoutY="-1.0" prefHeight="36.0" prefWidth="850.0" style="-fx-background-color: #313131;">
+        <Pane layoutY="-1.0" prefHeight="36.0" prefWidth="850.0" style="-fx-background-color: #1F3271;">
             <children>
                 <Label fx:id="labelNomUtilisateur" layoutX="149.0" layoutY="11.0" text="null" textFill="WHITE">
                     <font>
