@@ -51,7 +51,7 @@ public class User  {
     }
 
     public String hashFunction(){
-        return this.getPseudo()+"@"+this.getIPAdress();
+        return getIPAdress();
     }
 
 }
