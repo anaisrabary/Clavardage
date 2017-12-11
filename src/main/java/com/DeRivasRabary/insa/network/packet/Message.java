@@ -1,6 +1,8 @@
 package com.DeRivasRabary.insa.network.packet;
 
 
+import java.util.Scanner;
+
 import static com.DeRivasRabary.insa.network.packet.TypePacket.MESSAGE;
 
 /**
@@ -43,4 +45,13 @@ public class Message extends PacketManager{
         return type + date + pseudo + message;
     }
 
+    public static Message stringToMessage(String msgstr){
+        TypePacket typePacket = MESSAGE ;
+        Scanner sc = new Scanner(System.in);
+        String typeString = sc.findInLine("\n");
+
+
+
+        return new Message("","","","");
+    }
 }
