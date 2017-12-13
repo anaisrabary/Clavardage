@@ -104,6 +104,7 @@ public class ClavardageNI implements IncomingMessageListener{
      */
 
     //TODO : verifier l'unicite du pseudo sur le réseau
+    // A FAIRE DANS USER LIST !!!
     /**
      * Envoyer pseudo choisi sur le réseau et demander aux autres de nous reply si ils l'utilisent ou pas
      */

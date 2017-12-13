@@ -8,8 +8,8 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
-import java.util.Date;
 import java.util.Scanner;
+
 
 /**
  * Unit test for simple App.
@@ -91,6 +91,6 @@ public class PacketTest extends TestCase {
                 "192.168.0.1","192.168.0.2","Jeannot","HelloWorld");
         String packetstring = packetMessage.toString();
         Scanner sc = new Scanner(packetstring);
-        System.out.println(sc.Next());
+        System.out.println(sc.next());
     }
 }

@@ -3,6 +3,7 @@ package com.DeRivasRabary.insa.ui.testAppliFX;
 import com.DeRivasRabary.insa.network.ClavardageNI;
 import com.DeRivasRabary.insa.user.LocalUser;
 import com.DeRivasRabary.insa.user.User;
+import com.DeRivasRabary.insa.user.UserList;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -40,6 +41,8 @@ public class MainGUIFX extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+        ClavardageNI.createInstance();
+        UserList.createInstance();
 
         this.primaryStage=primaryStage;
         this.connexionStage=new Stage();
@@ -89,7 +92,6 @@ public class MainGUIFX extends Application {
     }
 
     public void launchMainApp() {
-        ClavardageNI.createInstance();
         ClavardageNI.getInstance().onConnect();
         boolean done = false;
         while (!done) {

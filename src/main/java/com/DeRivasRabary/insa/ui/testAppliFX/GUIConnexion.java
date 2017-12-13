@@ -1,6 +1,7 @@
 package com.DeRivasRabary.insa.ui.testAppliFX;
 
 
+import com.DeRivasRabary.insa.user.UserList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -21,19 +22,20 @@ public class GUIConnexion {
 
     public void onOKButtonClicked(ActionEvent actionEvent) {
         String pseudoPropose = champPseudo.getCharacters().toString();
-        //if ((!pseudoPropose.isEmpty()) && (pseudoPropose.length()<30) && (!UserList.getInstance().findUserByPseudo(pseudoPropose)) ) {
-            pseudoOK=true;
-            pseudo = pseudoPropose ;
-            champPseudo.setStyle("-fx-background-color: #ffffff;");
+            if (!pseudoPropose.isEmpty() && UserList.getInstance().isPseudoUnique(pseudoPropose) ) {
+                pseudoOK=true;
+                pseudo = pseudoPropose ;
+                champPseudo.setStyle("-fx-background-color: #ffffff;");
 
-        //} else {
-            champPseudo.setStyle("-fx-background-color: #FE5151;");
-            champPseudo.clear();
-        //}
+            } else {
+                champPseudo.setStyle("-fx-background-color: #FE5151;");
+                champPseudo.clear();
+            }
+
 
     }
 
-    public boolean pseudoOK() { return pseudoOK; }
+    public boolean ipseudoOK() { return pseudoOK; }
 
 
 }

@@ -87,7 +87,7 @@ public class UserList {
      * @return User
      * @throws UtilisateurNonTrouve
      */
-    public User findUserByPseudoExact(String pseudo) throws UtilisateurNonTrouve, BeMoreSpecificWithThePeudo {
+    public User findUserByPseudoExact(String pseudo) throws UtilisateurNonTrouve{
 
         ListIterator<User> it = userList.listIterator();
         User current ;
@@ -102,9 +102,7 @@ public class UserList {
                 foundUser=current;
             }
         }
-        if (!trouve){
-
-        }
+        if (!trouve) throw new UtilisateurNonTrouve(pseudo) ;
         return foundUser;
     }
 
@@ -114,7 +112,7 @@ public class UserList {
      * @return ArrayList<User>
      * @throws UtilisateurNonTrouve
      */
-    public ArrayList<User> findListUserByPseudo(String partPseudo) throws UtilisateurNonTrouve {
+    public ArrayList<User> findListUserByPseudo(String partPseudo) throws UtilisateurNonTrouve{
 
         ListIterator<User> it = userList.listIterator();
         User current ;
@@ -126,6 +124,7 @@ public class UserList {
                 list.add(current);
             }
         }
+        if (list.size()==0) throw new UtilisateurNonTrouve(partPseudo) ;
         return list;
     }
 
@@ -165,6 +164,18 @@ public class UserList {
             message = message + u.toString();
         }
         return message ;
+    }
+
+    public boolean isPseudoUnique(String pseudo){
+        ListIterator<User> it = userList.listIterator();
+        User current ;
+        while(it.hasNext()) {
+            current = it.next();
+            if (current.getPseudo() == pseudo){
+                return false ;
+            }
+        }
+        return true;
     }
 
 }
