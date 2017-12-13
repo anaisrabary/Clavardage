@@ -7,6 +7,8 @@ import com.DeRivasRabary.insa.network.packet.Message;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import com.DeRivasRabary.insa.network.packet.Message;
+
 
 import java.util.Scanner;
 
@@ -85,12 +87,18 @@ public class PacketTest extends TestCase {
                         ,helloMessage.toString());
     }
 
+
+
     // TODO : Essayer de transformer un string en paquet
     public static void main(String[] args) {
-        Message packetMessage = new PacketFactory().createPacketMessage(
-                "192.168.0.1","192.168.0.2","Jeannot","HelloWorld");
-        String packetstring = packetMessage.toString();
-        Scanner sc = new Scanner(packetstring);
-        System.out.println(sc.next());
+        Message msg = new Message("127.0.0.1","127.0.0.2","Jeannot","Bonjour cher ami");
+        String msgenvoye = msg.toDisplaySend();
+        if(Message.isMessageString(msgenvoye)){
+            Message msgreconst = Message.stringToMessage(msgenvoye);
+            System.out.println(msgreconst.toString());
+        }
+        else {
+            System.err.println("Probleme le message n'est pas reconnu comme un message");
+        }
     }
 }

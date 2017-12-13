@@ -130,7 +130,6 @@ public class ClavardageNI implements IncomingMessageListener{
     }
 
 
-    // TODO : supprimer celle de test Reseaux
     public static String getLocalAdress() {
         try
         {

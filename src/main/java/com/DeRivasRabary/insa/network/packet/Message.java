@@ -34,7 +34,7 @@ public class Message extends PacketManager{
         String date = "Date : " + this.date + "\n";
         String pseudo = "Pseudo : " + this.pseudo + "\n" ;
         String message = "Message : " + this.message +"\n" ;
-        return delimiter + type + ipsender + ipreceiver + date + pseudo + message + delimiter ;
+        return delimiter + type + ipsender + ipreceiver + date + pseudo + message +delimiter ;
     }
 
     public String toDisplaySend(){
@@ -45,13 +45,23 @@ public class Message extends PacketManager{
         return type + date + pseudo + message;
     }
 
-    public static Message stringToMessage(String msgstr){
-        TypePacket typePacket = MESSAGE ;
-        Scanner sc = new Scanner(System.in);
-        String typeString = sc.findInLine("\n");
 
-
-
-        return new Message("","","","");
+    public static boolean isMessageString(String msgstr){
+        int position = msgstr.indexOf("Type :");
+        boolean isMsg = msgstr.regionMatches(position,"Type : Message\n",0,15);
+        return isMsg;
     }
+
+
+    public static Message stringToMessage(String msgstr) {
+        TypePacket typePacket = MESSAGE;
+        int position = 10 + msgstr.indexOf("Message : ");
+        int length = msgstr.length();
+        char[] dst = new char[length - position];
+        msgstr.getChars(position, length, dst, 0);
+        String message = new String(dst);
+        return new Message("", "", "", message);
+    }
+
+
 }
