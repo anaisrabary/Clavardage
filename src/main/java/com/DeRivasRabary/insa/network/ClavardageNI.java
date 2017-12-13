@@ -20,15 +20,19 @@ public class ClavardageNI implements IncomingMessageListener{
     private static ClavardageNI instance ;
     private UDPMessageReceiverManager udpMessageReceiverManager;
     private UDPMessageSenderManager udpMessageSenderManager ;
+    private Thread threadUDPListener ;
 
 
     public ClavardageNI(){
-        try {
-            this.udpMessageReceiverManager = new UDPMessageReceiverManager(PORT);
-            this.udpMessageSenderManager = new UDPMessageSenderManager() ;
-        }catch (Exception e){
-          e.printStackTrace();
-        }
+        this.threadUDPListener = new Thread(() -> {
+            try {
+                this.udpMessageReceiverManager = new UDPMessageReceiverManager(PORT);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        });
+        this.udpMessageSenderManager = new UDPMessageSenderManager() ;
+
 
     }
 
@@ -75,8 +79,12 @@ public class ClavardageNI implements IncomingMessageListener{
         }
     }
 
+    public void go() throws IOException {
+        threadUDPListener.start();
+    }
     public void stop() throws Exception{
         udpMessageReceiverManager.close();
+        threadUDPListener.interrupt();
     }
     /**
      * Affiche un message reçu

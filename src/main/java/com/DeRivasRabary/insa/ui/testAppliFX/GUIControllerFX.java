@@ -44,7 +44,7 @@ public class GUIControllerFX {
     public static GUIControllerFX getInstance() { return instance; }
 
     public void setPseudoUser (String pseudo){
-        if (pseudo != null)
+        if (!pseudo.equals(""))
             labelPseudoUtilisateur.setText(pseudo);
         else
             labelPseudoUtilisateur.setText("Aucun nom trouve pour l'utilisateur");

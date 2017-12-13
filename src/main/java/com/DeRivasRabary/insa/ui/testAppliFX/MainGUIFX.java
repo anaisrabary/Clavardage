@@ -62,7 +62,7 @@ public class MainGUIFX extends Application {
     public void initConnexion() {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/ConnectionPanel.fxml"));
-            connexionStage.setTitle("Chat System conect");
+            connexionStage.setTitle("Chat System connect");
             connexionStage.setScene(new Scene(root, 400, 200));
         } catch (IOException e) {
             e.printStackTrace();
@@ -73,7 +73,7 @@ public class MainGUIFX extends Application {
     public void initLayout() {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/GUIControllerFX.fxml"));
-            Platform.runLater( ( () -> primaryStage.setTitle("Chat System")));
+            Platform.runLater( ( () -> primaryStage.setTitle("Chat System  --- Main")));
             Platform.runLater( ( () ->primaryStage.setScene(new Scene(root, 850, 400))));
         } catch (IOException e) {
             e.printStackTrace();
@@ -109,11 +109,14 @@ public class MainGUIFX extends Application {
         }
 
 
-        User moi = null;
-        moi = new LocalUser(GUIConnexion.getInstance().pseudo, ClavardageNI.getLocalAdress(), true);
+        User moi = new LocalUser(GUIConnexion.getInstance().pseudo, ClavardageNI.getLocalAdress(), true);
         initLayout();
         GUIControllerFX.getInstance().setPseudoUser(moi.getPseudo());
-        //clavardageNI.go();
+        try {
+            ClavardageNI.getInstance().go();
+        }catch (Exception e ){
+
+        }
 
         primaryStage.setOnCloseRequest( (WindowEvent e) -> closeApp() );
     }

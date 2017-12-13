@@ -24,7 +24,6 @@ public class Main extends Application {
 
 
         Group mainGroup = new Group();
-        ;
         primaryStage.setTitle("Chat-System Main Window ");
         primaryStage.setScene(mainWindow(mainGroup));
         primaryStage.show();

@@ -1,6 +1,8 @@
 package com.DeRivasRabary.insa.network;
 
 
+import com.DeRivasRabary.insa.ui.infrastructure.Terminal;
+
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 
@@ -29,7 +31,15 @@ public class UDPMessageReceiverManager implements MessageReceiverService{
         DatagramPacket receiverPacket = new DatagramPacket(new byte[BUFFER_SIZE],BUFFER_SIZE);
         receiverSocket.receive(receiverPacket);
         byte[] data = receiverPacket.getData();
-        incomingMessageListener.onNewIncominMessage(new String(data).trim());
+        String message = new String(data).trim();
+        if (message.equals("")){
+            System.out.println("c'est bizarre c'est vide");
+        }
+        else {
+            // TODO : discriminer les packet pour savoir si c'est un hello:message/bye
+            incomingMessageListener.onNewIncominMessage(message);
+        }
+
 
     }
 
