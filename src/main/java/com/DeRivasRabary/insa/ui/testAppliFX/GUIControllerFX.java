@@ -30,13 +30,11 @@ public class GUIControllerFX {
     public User userCourant;
     public User userPrécédent; // TODO : ???
     private final PacketFactory packetFactory ;
-    private UserList userList ;
 
     public GUIControllerFX() {
         instance=this;
         userPrécédent=null;
         packetFactory = new PacketFactory();
-        userList = new UserList();
     }
 
 
@@ -80,11 +78,6 @@ public class GUIControllerFX {
             openedChatSession.getChildren().addAll(text);
         }
 
-
-
-
-
-
     }
 
 
@@ -103,7 +96,7 @@ public class GUIControllerFX {
 
     public void updateContacts() {
         users.getChildren().clear();
-        ListIterator<User> it = userList.getInstance().getUserList().listIterator();
+        ListIterator<User> it = UserList.getInstance().getUserList().listIterator();
         while (it.hasNext()){
         //for() {
             // Map.Entry<InetAddress, User> entry : Messagerie.getInstance().mapUsersByIP.entrySet()) {

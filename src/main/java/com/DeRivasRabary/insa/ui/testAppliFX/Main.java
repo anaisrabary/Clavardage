@@ -40,8 +40,6 @@ public class Main extends Application {
         text.setFont(new Font(30));
         text.setX(10);
         text.setY(50);
-        text.setText("You are here !");
-
         ObservableList list = group.getChildren();
 
         list.add(text);

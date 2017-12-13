@@ -112,6 +112,14 @@ public class MainGUIFX extends Application {
         User moi = new LocalUser(GUIConnexion.getInstance().pseudo, ClavardageNI.getLocalAdress(), true);
         initLayout();
         GUIControllerFX.getInstance().setPseudoUser(moi.getPseudo());
+        UserList.getInstance().addUser(moi);
+        // pour le test !
+        UserList.getInstance().addUser(new User("tutu","123.123.123.123"));
+        UserList.getInstance().addUser(new User("titi","205.205.205.205"));
+        UserList.getInstance().addUser(new User("tata","168.192.100.100"));
+        UserList.getInstance().addUser(new User("tete","10.10.10.10"));
+        GUIControllerFX.getInstance().updateContacts();
+
         try {
             ClavardageNI.getInstance().go();
         }catch (Exception e ){
