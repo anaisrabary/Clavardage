@@ -91,10 +91,31 @@ public class PacketTest extends TestCase {
 
     // TODO : Essayer de transformer un string en paquet
     public static void main(String[] args) {
-        Message msg = new Message("127.0.0.1","127.0.0.2","Jeannot","Bonjour cher ami");
+        /* test message string
+        Message msg = new Message("127.0.0.1","127.0.0.2","Blibli","Bonjour cher ami");
         String msgenvoye = msg.toDisplaySend();
         if(Message.isMessageString(msgenvoye)){
-            Message msgreconst = Message.stringToMessage(msgenvoye);
+            Message msgreconst = Message.stringToMessage(msgenvoye,"ipsender","ipreceiver");
+            System.out.println(msgreconst.toString());
+        }
+        else {
+            System.err.println("Probleme le message n'est pas reconnu comme un message");
+        } */
+        /* test hello string
+        Hello hellomsg = new Hello("ipsender","ipreceiver","pseudo",true);
+        String msgenvoye = hellomsg.toDisplaySend();
+        if(Hello.isHelloString(msgenvoye)){
+            Hello msgreconst = Hello.stringToHello(msgenvoye,"ipsender","ipreceiver");
+            System.out.println(msgreconst.toString());
+        }
+        else {
+            System.err.println("Probleme le message n'est pas reconnu comme un message");
+        } */
+        /* test bye string */
+        Bye byemsg = new Bye("ipsender","ipreceiver","pseudo");
+        String msgenvoye = byemsg.toDisplaySend();
+        if(Bye.isByeString(msgenvoye)){
+            Bye msgreconst = Bye.stringToBye(msgenvoye,"ipsender","ipreceiver");
             System.out.println(msgreconst.toString());
         }
         else {

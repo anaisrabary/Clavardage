@@ -53,14 +53,27 @@ public class Message extends PacketManager{
     }
 
 
-    public static Message stringToMessage(String msgstr) {
-        TypePacket typePacket = MESSAGE;
-        int position = 10 + msgstr.indexOf("Message : ");
+    public static Message stringToMessage(String msgstr,String ipSender, String ipReceiver) {
+        int positionMSG = 10 + msgstr.indexOf("Message : ");
+        int positionPseudo = 9 + msgstr.indexOf("Pseudo : ");
+        int finpseudo = msgstr.indexOf("\n",positionPseudo);
+
+
+        // recuperation du message
         int length = msgstr.length();
-        char[] dst = new char[length - position];
-        msgstr.getChars(position, length, dst, 0);
+        char[] dst = new char[length - positionMSG];
+        msgstr.getChars(positionMSG, length, dst, 0);
         String message = new String(dst);
-        return new Message("", "", "", message);
+        // fin récupération message
+
+        // recuperation pseudo
+        int pseudolength = finpseudo - positionPseudo;
+        char[] charpseudo = new char[pseudolength];
+        msgstr.getChars(positionPseudo,finpseudo,charpseudo,0);
+        String pseudo = new String(charpseudo);
+        //fin recuperation pseudo
+
+        return new Message(ipSender, ipReceiver, pseudo, message);
     }
 
 

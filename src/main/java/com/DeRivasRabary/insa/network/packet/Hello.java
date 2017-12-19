@@ -41,14 +41,35 @@ public class Hello extends PacketManager {
         return type + date + pseudo + replyrec;
     }
 
-    //TODO
-    public static boolean isHelloString(String msgstr) {
 
-        return true;
+    public static boolean isHelloString(String msgstr) {
+        int position = msgstr.indexOf("Type :");
+        boolean isMsg = msgstr.regionMatches(position,"Type : Hello\n",0,13);
+        return isMsg;
     }
 
-    //TODO
-    public static Hello stringToHello(String msgstr) {
-        return new Hello("0", "0", "pseuod", true);
+
+    public static Hello stringToHello(String msgstr,String ipsender, String ipreceiver) {
+        boolean replyrec;
+        // pour le replyrec
+        int position = 11 + msgstr.indexOf("ReplyRec : ");
+        int length = msgstr.length();
+        char[] dst = new char[length - position];
+        msgstr.getChars(position, length, dst, 0);
+        String message = new String(dst);
+        if (message.equals("true\n")) replyrec=true;
+        else replyrec=false;
+
+        // pour le pseudo
+        int positionPseudo = 9 + msgstr.indexOf("Pseudo : ");
+        int finpseudo = msgstr.indexOf("\n",positionPseudo);
+        // recuperation pseudo
+        int pseudolength = finpseudo - positionPseudo;
+        char[] charpseudo = new char[pseudolength];
+        msgstr.getChars(positionPseudo,finpseudo,charpseudo,0);
+        String pseudo = new String(charpseudo);
+        //fin recuperation pseudo
+
+        return new Hello(ipsender,ipreceiver,pseudo,replyrec);
     }
 }

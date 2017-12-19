@@ -36,15 +36,19 @@ public class Bye extends PacketManager {
     }
 
 
-    // TODO
     public static boolean isByeString(String msgstr) {
-
-        return false;
+        int position = msgstr.indexOf("Type :");
+        boolean isByeMsg = msgstr.regionMatches(position,"Type : Bye\n",0,11);
+        return isByeMsg;
     }
 
-    //TODO
-    public static Bye stringToBye(String msgstr) {
 
-        return new Bye("0","0","pseudo");
+    public static Bye stringToBye(String msgstr, String ipsender, String ipreceiver) {
+        int position = 9 + msgstr.indexOf("Pseudo : ");
+        int length = msgstr.length();
+        char[] dst = new char[length - position];
+        msgstr.getChars(position, length, dst, 0);
+        String pseudo = new String(dst);
+        return new Bye(ipsender,ipreceiver,pseudo);
     }
 }
