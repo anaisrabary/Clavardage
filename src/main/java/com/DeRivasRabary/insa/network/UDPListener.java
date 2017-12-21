@@ -32,11 +32,7 @@ public abstract class UDPListener extends Thread {
                 try {
                     PacketManager p = (PacketManager) is.readObject();
                     //pas la peine de lire ce qu'on envoie !
-                    //if(!p.getAddrSource().equals(ContactCollection.getMe().getIp())) {
                     managePacket(p);
-                    //}
-
-
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();
                 }

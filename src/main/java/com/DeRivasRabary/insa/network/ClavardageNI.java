@@ -126,6 +126,7 @@ public class ClavardageNI {
     }
 
     public void launchNetwork() {
+        System.out.println("launch listener");
         notifListener.start();
         helloListener.start();
         helloListener.addObserver(controller);
@@ -162,6 +163,8 @@ public class ClavardageNI {
     }
 
     public void broadcastNotification(Notification.Notification_type type, String data) {
+        System.out.println("Broadcast to send");
+        System.out.println("@ de broadcast : " + NetworkResourcefull.getBroadcastAddress().toString());
         Notification notification = new Notification( UserList.getMoi().getIPAdress(), NetworkResourcefull.getBroadcastAddress(),"bcast", type, data);
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         ObjectOutputStream os = null;

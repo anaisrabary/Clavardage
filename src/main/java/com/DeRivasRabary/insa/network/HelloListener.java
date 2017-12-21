@@ -33,6 +33,7 @@ public class HelloListener extends UDPListener implements Observable {
 
     @Override
     protected void managePacket(PacketManager p) {
+        System.out.println("ooooooooooooo");
         ClavardageNI ni = ClavardageNI.getInstance();
         UserList users = UserList.getInstance();
         if(p instanceof Hello) {
