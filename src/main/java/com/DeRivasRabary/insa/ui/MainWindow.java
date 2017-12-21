@@ -19,11 +19,11 @@ public class MainWindow {
 
         ConnexionViewController.createInstance(this.stage, controller);
         conViewCtrl = ConnexionViewController.getInstance();
-        stage.setTitle("toto try");
+        stage.setTitle("fenêtre de connection");
         stage.setScene(new Scene(conViewCtrl));
         stage.setResizable(false);
-        stage.setWidth(800);
-        stage.setHeight(600);
+        stage.setWidth(400);
+        stage.setHeight(250);
 
         //Pour quitter proprement l'application (ie tuer tous les threads)
         stage.setOnCloseRequest(e -> {
