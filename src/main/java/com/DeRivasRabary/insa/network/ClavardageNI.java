@@ -5,6 +5,7 @@ import com.DeRivasRabary.insa.controller.Controller;
 import com.DeRivasRabary.insa.model.User;
 import com.DeRivasRabary.insa.model.UserList;
 import com.DeRivasRabary.insa.model.packet.*;
+import javafx.collections.ObservableList;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -16,9 +17,9 @@ import static com.DeRivasRabary.insa.controller.Controller.readBytesFromFile;
 
 
 public class ClavardageNI {
-    private static final int NOTIFPORT = 1234;
-    private static final int BDCASTPORT = 12345;
-    public static int BASEPORT =12343;
+    private static final int NOTIFPORT = 20573;
+    private static final int BDCASTPORT = 20574;
+    public static int BASEPORT =20575;
 
     private static ClavardageNI instance ;
 
@@ -67,10 +68,11 @@ public class ClavardageNI {
             try {
                 // le socket notif  en écoute :
                 notif = new DatagramSocket(NOTIFPORT);
-                notifListener = new BroadcastListener(notif);
+                helloListener = new HelloListener(notif);
 
                 hello = new DatagramSocket(BDCASTPORT);
-                helloListener = new HelloListener(hello);
+                notifListener = new BroadcastListener(hello);
+
 
             }catch (Exception e){
                 e.printStackTrace();
@@ -157,6 +159,7 @@ public class ClavardageNI {
 
     }
 
+
     //surcharge s'il n'y a pas de data
     public void broadcastNotification(Notification.Notification_type type) {
         broadcastNotification(type, "");
@@ -177,8 +180,6 @@ public class ClavardageNI {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
 
     public void transmitMessage(String message, User dest) {
@@ -205,7 +206,7 @@ public class ClavardageNI {
             os.writeObject(control_packet);
             byte[] buffer = outputStream.toByteArray();
             DatagramPacket sendPacket = new DatagramPacket(buffer, buffer.length, dest.getIPAdress(), NOTIFPORT);
-            notif.send(sendPacket);
+            hello.send(sendPacket);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -5,6 +5,7 @@ import com.DeRivasRabary.insa.model.Observer;
 import com.DeRivasRabary.insa.model.User;
 import com.DeRivasRabary.insa.model.UserList;
 import com.DeRivasRabary.insa.model.packet.Hello;
+import com.DeRivasRabary.insa.model.packet.Notification;
 import com.DeRivasRabary.insa.model.packet.PacketManager;
 
 import static com.DeRivasRabary.insa.network.ClavardageNI.BASEPORT;
@@ -19,7 +20,6 @@ import java.util.ArrayList;
 /**
  * Manage all control packets
  *
- * @author alex205
  */
 public class HelloListener extends UDPListener implements Observable {
 
@@ -31,11 +31,14 @@ public class HelloListener extends UDPListener implements Observable {
         this.observers = new ArrayList<>();
     }
 
+
     @Override
     protected void managePacket(PacketManager p) {
-        System.out.println("ooooooooooooo");
         ClavardageNI ni = ClavardageNI.getInstance();
         UserList users = UserList.getInstance();
+        if (p instanceof Notification) {
+            System.out.println("NOTIFICATION ......");
+        }
         if(p instanceof Hello) {
             Hello hey = (Hello) p;
             System.out.println("RECEIVED, le port :" + hey.getData());

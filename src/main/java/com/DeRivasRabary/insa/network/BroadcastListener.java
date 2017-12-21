@@ -13,7 +13,6 @@ import java.net.DatagramSocket;
 /**
  * Manage all broadcast packets
  *
- * @author alex205
  */
 public class BroadcastListener extends UDPListener{
 
@@ -26,6 +25,7 @@ public class BroadcastListener extends UDPListener{
         ClavardageNI ni = ClavardageNI.getInstance();
         ViewController viewController = ViewController.getInstance();
         if(p instanceof Notification) {
+            System.out.println("traitement notification");
             Notification n = (Notification) p;
                 UserList users = UserList.getInstance();
                 if(!n.getIpSender().equals(UserList.getMoi().getIPAdress())) {
