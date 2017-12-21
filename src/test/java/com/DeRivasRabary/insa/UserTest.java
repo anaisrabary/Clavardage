@@ -1,9 +1,7 @@
-package com.DeRivasRabary.insa;
+/*package com.DeRivasRabary.insa;
 
-import com.DeRivasRabary.insa.user.LocalUser;
-import com.DeRivasRabary.insa.user.User;
-import com.DeRivasRabary.insa.user.UserList;
-import com.DeRivasRabary.insa.user.UserListMap;
+import com.DeRivasRabary.insa.model.User;
+import com.DeRivasRabary.insa.model.UserList;
 import junit.framework.TestCase;
 
 import java.util.ArrayList;
@@ -11,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Unit test for simple App.
  */
-
+/*
 public class UserTest extends TestCase {
 
     /*
@@ -212,7 +210,7 @@ public class UserTest extends TestCase {
             assertEquals("true","true");
         }
     }
-    */
+
 
     public void testUserListMap(){
 
@@ -222,7 +220,7 @@ public class UserTest extends TestCase {
         User user1 = new User("Jeannot","127.0.0.1");
         User user2 = new User("Pierrot","127.0.0.2");
         User user3 = new User("Paulo", "127.0.0.3");
-        UserListMap listMap = UserListMap.createInstance() ;
+        UserList listMap = UserList.createInstance() ;
         listMap.addUser(user1); listMap.addUser(user2); listMap.addUser(user3);
         System.out.println("Affichage des users : ");
         System.out.println(listMap.toString());
@@ -279,4 +277,5 @@ public class UserTest extends TestCase {
     {
         assertTrue( true );
     }
-    */
+
+*/

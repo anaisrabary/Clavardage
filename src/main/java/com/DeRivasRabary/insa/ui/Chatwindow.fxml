@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.TextFlow?>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="theme" type="BorderPane" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
+    <top>
+        <ToolBar fx:id="menu_bar" prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <items>
+                <Button fx:id="btn_fichiers" focusTraversable="false" mnemonicParsing="false" onMouseClicked="#handleFileButton" styleClass="options" text="Fichiers" textFill="WHITE" />
+            </items>
+        </ToolBar>
+    </top>
+    <bottom>
+        <HBox styleClass="footer">
+            <children>
+                <VBox fx:id="box_type_message">
+                    <children>
+                        <Label fx:id="last_message_date_label" textFill="#000000bf">
+                            <VBox.margin>
+                                <Insets bottom="10.0" top="5.0" />
+                            </VBox.margin>
+                            <font>
+                                <Font size="11.0" />
+                            </font></Label>
+                        <TextArea fx:id="message_write" prefHeight="66.0" prefWidth="450.0" />
+                    </children>
+                    <padding>
+                        <Insets right="10.0" />
+                    </padding>
+                    <HBox.margin>
+                        <Insets left="42.0" />
+                    </HBox.margin>
+                </VBox>
+            </children>
+            <padding>
+                <Insets left="3.0" />
+            </padding>
+        </HBox>
+    </bottom>
+    <center>
+        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <children>
+                <HBox>
+                    <children>
+                        <Label fx:id="pseudo_label" text=" ">
+                            <font>
+                                <Font size="17.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="status_label">
+                            <font>
+                                <Font size="10.0" />
+                            </font>
+                            <padding>
+                                <Insets top="6.0" />
+                            </padding>
+                            <HBox.margin>
+                                <Insets left="10.0" />
+                            </HBox.margin>
+                        </Label>
+                    </children>
+                    <padding>
+                        <Insets left="5.0" />
+                    </padding>
+                </HBox>
+                <ScrollPane fx:id="messages_received_pane" fitToHeight="true" fitToWidth="true" VBox.vgrow="ALWAYS">
+                    <TextFlow fx:id="messages_received" />
+                </ScrollPane>
+            </children>
+            <padding>
+                <Insets top="20.0" />
+            </padding>
+            <BorderPane.margin>
+                <Insets left="45.0" />
+            </BorderPane.margin>
+        </VBox>
+    </center>
+
+</fx:root>

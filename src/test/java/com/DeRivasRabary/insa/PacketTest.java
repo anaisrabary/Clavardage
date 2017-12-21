@@ -1,21 +1,16 @@
-package com.DeRivasRabary.insa;
+/*package com.DeRivasRabary.insa;
 
-import com.DeRivasRabary.insa.factory.PacketFactory;
-import com.DeRivasRabary.insa.network.packet.Bye;
-import com.DeRivasRabary.insa.network.packet.Hello;
-import com.DeRivasRabary.insa.network.packet.Message;
-import junit.framework.Test;
+import com.DeRivasRabary.insa.model.packet.factory.PacketFactory;
+import com.DeRivasRabary.insa.model.packet.Bye;
+import com.DeRivasRabary.insa.model.packet.Hello;
+import com.DeRivasRabary.insa.model.packet.Message;
 import junit.framework.TestCase;
-import junit.framework.TestSuite;
-import com.DeRivasRabary.insa.network.packet.Message;
-
-
-import java.util.Scanner;
 
 
 /**
  * Unit test for simple App.
  */
+/*
 public class PacketTest extends TestCase {
 
 
@@ -112,6 +107,7 @@ public class PacketTest extends TestCase {
             System.err.println("Probleme le message n'est pas reconnu comme un message");
         } */
         /* test bye string */
+        /*
         Bye byemsg = new Bye("ipsender","ipreceiver","pseudo");
         String msgenvoye = byemsg.toDisplaySend();
         if(Bye.isByeString(msgenvoye)){
@@ -123,3 +119,4 @@ public class PacketTest extends TestCase {
         }
     }
 }
+*/
