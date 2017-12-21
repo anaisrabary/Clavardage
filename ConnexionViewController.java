@@ -2,6 +2,7 @@ package com.DeRivasRabary.insa.ui;
 
 
 import com.DeRivasRabary.insa.controller.Controller;
+import com.DeRivasRabary.insa.model.UserList;
 import com.DeRivasRabary.insa.model.User_Status;
 
 
@@ -78,6 +79,7 @@ public class ConnexionViewController extends BorderPane {
         if(event.getSource() == connect_btn) {
             controller.connect(pseudo.getText());
             controller.changeStatus(myStatus.toString());
+            UserList.createInstance();
             System.out.println("connexion");
             Stage stageBis = (Stage) connect_btn.getScene().getWindow();
             ContactViewController contactController = new ContactViewController(stageBis, controller);

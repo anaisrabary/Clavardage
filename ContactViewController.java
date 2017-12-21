@@ -64,11 +64,13 @@ public class ContactViewController extends BorderPane {
         } catch (NullPointerException e) {}
     }
 
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void initialize(/*URL url, ResourceBundle resourceBundle*/) {
+        System.out.println("dans initialize ");
         UserList users = UserList.getInstance();
         pseudo_label.setText(UserList.getMoi().getPseudo());
 
         // statut initial
+        /*
         switch (User_Status.valueOf(UserList.getMoi().getStatus().toString())) {
             case ONLINE:
                 status_change_list.getSelectionModel().select(0);
@@ -76,7 +78,7 @@ public class ContactViewController extends BorderPane {
             case BUSY:
                 status_change_list.getSelectionModel().select(2);
                 break;
-        }
+        }*/
 
         // Changement de statut
         status_change_list.getSelectionModel().selectedIndexProperty().addListener((observableValue, number, number2) -> {

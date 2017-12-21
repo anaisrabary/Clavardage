@@ -19,7 +19,7 @@ public class MainWindow {
 
         ConnexionViewController.createInstance(this.stage, controller);
         conViewCtrl = ConnexionViewController.getInstance();
-        stage.setTitle("fenêtre de connection");
+        stage.setTitle("Chat Sytem - Clavardage");
         stage.setScene(new Scene(conViewCtrl));
         stage.setResizable(false);
         stage.setWidth(400);
