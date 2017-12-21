@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: #fff, #fff;" type="BorderPane" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+    <top>
+        <VBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+            <children>
+                <HBox alignment="CENTER_LEFT" prefHeight="81.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+                  <children>
+                      <Label text="Pseudo :" />
+                      <TextField fx:id="pseudo" alignment="BASELINE_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefWidth="200.0" promptText="enter your pseudo" translateX="100.0">
+                          <VBox.margin>
+                              <Insets bottom="10.0" />
+                          </VBox.margin>
+                      </TextField>
+                  </children>
+                </HBox>
+            </children>
+        </VBox>
+    </top>
+    <bottom>
+    </bottom>
+    <right>
+    </right>
+   <bottom>
+            <Button fx:id="connect_btn" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="31.0" prefWidth="209.0" text="Se connecter" BorderPane.alignment="CENTER" />
+   </bottom>
+   <right>
+        <VBox prefHeight="88.0" prefWidth="397.0" BorderPane.alignment="CENTER">
+            <children>
+                <HBox pickOnBounds="false" prefHeight="30.0" prefWidth="400.0">
+                    <children>
+                        <Label prefHeight="21.0" prefWidth="214.0" text="Statut de connexion : " />
+                        <ChoiceBox fx:id="status_change_list" prefWidth="150.0" translateX="-10.0" value="Disponible">
+                            <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                    <String fx:value="Disponible" />
+                                    <String fx:value="Occupé" />
+                                </FXCollections>
+                            </items>
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                        </ChoiceBox>
+                    </children>
+                </HBox>
+            </children>
+            <BorderPane.margin>
+                <Insets />
+            </BorderPane.margin>
+        </VBox>
+   </right>
+</fx:root>
