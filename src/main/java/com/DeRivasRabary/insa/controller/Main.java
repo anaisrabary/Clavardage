@@ -9,9 +9,11 @@ import java.net.UnknownHostException;
 public class Main {
 
     public static void main(String[] args) throws UnknownHostException {
-        Controller controller = new Controller(); //instantiation du contrôleur
+
         ClavardageNI.createInstance();
+        Controller controller = new Controller(); //instantiation du contrôleur
         ClavardageNI.getInstance().setController(controller);
+
 
         //On passe le contrôleur principal au contrôleur de vues pour que les vues de chat y ait accès
         ViewController.createInstance();

@@ -3,17 +3,18 @@ package com.DeRivasRabary.insa.model.packet;
 
 import javafx.beans.property.SimpleObjectProperty;
 
+import java.io.Serializable;
 import java.net.InetAddress;
 import java.text.DateFormat;
 import java.util.Date;
 
-public abstract class PacketManager {
+public abstract class PacketManager implements Serializable{
 
     private InetAddress ipSender ;
     private InetAddress ipReceiver ;
     private String pseudo ;
     private String date ;
-    private SimpleObjectProperty type ;
+    private TypePacket type ;
 
     /**
      * Constructeur de paquet commun à hello-bye-message
@@ -28,7 +29,7 @@ public abstract class PacketManager {
         this.ipReceiver = ipReceiver ;
         this.pseudo = pseudo ;
         this.date = mediumDateFormat().format(new Date());
-        this.type = new SimpleObjectProperty(type);
+        this.type = type;
     }
 
     private DateFormat mediumDateFormat() {
@@ -41,17 +42,17 @@ public abstract class PacketManager {
      * Méthode qui affirme si le packet est un MESSAGE
      * @return Boolean
      */
-    public Boolean isPacketMESSAGE (){ return (type.get()==TypePacket.MESSAGE); }
+    public Boolean isPacketMESSAGE (){ return (type==TypePacket.MESSAGE); }
     /**
      * Méthode qui affirme si le packet est un HELLO
      * @return Boolean
      */
-    public Boolean isPacketHELLO (){ return (type.get()==TypePacket.HELLO); }
+    public Boolean isPacketHELLO (){ return (type==TypePacket.HELLO); }
     /**
      * Méthode qui affirme si le packet est un HELLO
      * @return Boolean
      */
-    public Boolean isPacketBYE (){ return (type.get()==TypePacket.BYE); }
+    public Boolean isPacketBYE (){ return (type==TypePacket.BYE); }
 
 
     /**

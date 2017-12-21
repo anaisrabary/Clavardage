@@ -6,7 +6,7 @@ import java.net.InetAddress;
 /**
  * Classe message hérite de packetManager et construit un message pour une conversation
  */
-public class Message extends PacketManager{
+public final class Message extends PacketManager{
 
     private String message ;
 
