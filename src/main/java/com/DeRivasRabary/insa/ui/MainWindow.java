@@ -10,22 +10,25 @@ import java.io.IOException;
 
 public class MainWindow {
     public static Stage stage;
+    public ConnexionViewController conViewCtrl;
+    public Controller controller;
 
-    public MainWindow(Controller cont) throws Exception {
+    public MainWindow(Controller cont) throws IOException {
         this.stage = new Stage();
+        controller = cont ;
 
-        ConnexionViewController controller = new ConnexionViewController(this.stage, cont);
+        ConnexionViewController.createInstance(this.stage, controller);
+        conViewCtrl = ConnexionViewController.getInstance();
         stage.setTitle("toto try");
-        stage.setScene(new Scene(controller));
+        stage.setScene(new Scene(conViewCtrl));
         stage.setResizable(false);
         stage.setWidth(800);
         stage.setHeight(600);
-        stage.show();
 
         //Pour quitter proprement l'application (ie tuer tous les threads)
         stage.setOnCloseRequest(e -> {
-            if(cont.getState() == Controller.App_State_t.CONNECTED) {
-                cont.disconnect();
+            if(controller.getState() == Controller.App_State_t.CONNECTED) {
+                controller.disconnect();
                 Platform.exit();
                 System.exit(0);
             }
@@ -36,4 +39,5 @@ public class MainWindow {
     public void show() {
         this.stage.show();
     }
+
 }

@@ -3,51 +3,68 @@
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
 
 <?import javafx.geometry.Insets?>
 <?import javafx.collections.FXCollections?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fff, #fff;" type="BorderPane" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+         prefWidth="600.0"
+         style="-fx-background-color: #fff, #fff;" xmlns="http://javafx.com/javafx/8.0.112"
+         xmlns:fx="http://javafx.com/fxml/1"
+         type="BorderPane">
+    <top>
+        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <children>
+                <TextField fx:id="pseudo" promptText="tutulututu">
+                    <VBox.margin>
+                        <Insets bottom="10.0"/>
+                    </VBox.margin>
+                </TextField>
+            </children>
+        </VBox>
+    </top>
     <center>
         <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
             <children>
-                <TextField fx:id="pseudo" promptText="exemple555@hotmail.fr">
-                    <VBox.margin>
-                        <Insets bottom="10.0" />
-                    </VBox.margin></TextField>
-
                 <HBox pickOnBounds="false" prefHeight="30.0" prefWidth="200.0">
                     <children>
-                        <Label text="Statut de connexion : " />
+                        <Label text="Statut de connexion : "/>
                         <ChoiceBox fx:id="status_change_list" prefWidth="150.0" translateY="-5.0" value="Disponible">
                             <items>
                                 <FXCollections fx:factory="observableArrayList">
-                                    <String fx:value="Disponible" />
-                                    <String fx:value="Occupé" />
+                                    <String fx:value="Disponible"/>
+                                    <String fx:value="Occupé"/>
                                 </FXCollections>
                             </items>
                             <opaqueInsets>
-                                <Insets />
+                                <Insets/>
                             </opaqueInsets>
                         </ChoiceBox>
                     </children>
                 </HBox>
                 <HBox prefHeight="24.0" prefWidth="180.0">
                     <children>
-                        <Button fx:id="connect_btn" mnemonicParsing="false" onAction="#handleButtonAction" text="Se connecter">
+                        <Button fx:id="connect_btn" mnemonicParsing="false" onAction="#handleButtonAction"
+                                text="Se connecter">
                             <HBox.margin>
-                                <Insets right="20.0" />
-                            </HBox.margin></Button>
+                                <Insets right="20.0"/>
+                            </HBox.margin>
+                        </Button>
                     </children>
                     <VBox.margin>
-                        <Insets bottom="10.0" top="10.0" />
+                        <Insets bottom="10.0" top="10.0"/>
                     </VBox.margin>
                 </HBox>
             </children>
             <BorderPane.margin>
-                <Insets right="150.0" />
+                <Insets right="150.0"/>
             </BorderPane.margin>
         </VBox>
     </center>
+    <bottom>
+    </bottom>
+    <right>
+    </right>
 </fx:root>

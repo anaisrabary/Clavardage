@@ -79,7 +79,7 @@ public class ChatSessionViewController extends BorderPane implements Initializab
         was_dialog = false;
         offline = false;
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("chatWindow.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Chatwindow.fxml"));
         loader.setRoot(this);
         loader.setController(this);
 

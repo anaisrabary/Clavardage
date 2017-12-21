@@ -36,7 +36,7 @@ public class ContactViewController extends BorderPane {
     public ContactViewController(Stage stage, Controller controller) {
         this.stage = stage;
         this.controller = controller;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("contactwindow.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Contactwindow.fxml"));
         loader.setRoot(this);
         loader.setController(this);
 

@@ -21,37 +21,47 @@ import java.io.IOException;
 
 public class ConnexionViewController extends BorderPane {
 
-    private Stage stage;
+    private static ConnexionViewController instance;
+    public Stage stage;
     private Controller controller;
     private User_Status myStatus = User_Status.ONLINE; // par defaut
 
     @FXML
-    public Button buttonConnexion;
+    private TextField champPseudo;
     @FXML
-    public TextField champPseudo;
+    private Button buttonConnexion;
     @FXML
     private ChoiceBox status_change_list;
 
 
+    public static ConnexionViewController createInstance(Stage stage, Controller ctrl){
+        if (instance == null) {
+            instance = new ConnexionViewController(stage, ctrl);
+        }
+        return instance;
+    }
 
-    public boolean pseudoOK = false;
-
-    public String pseudo = "null";
+    public static ConnexionViewController getInstance() {
+        return instance;
+    }
 
     public ConnexionViewController(Stage stage, Controller controller) {
         this.stage = stage;
         this.controller = controller;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("connexionView.fxml"));
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/DeRivasRabary/insa/ui/connexionView.fxml"));
         loader.setRoot(this);
         loader.setController(this);
 
         try {
-            loader.load();
+             loader.load();
         } catch(IOException e) {
             throw new RuntimeException(e);
         }
 
-        /*status_change_list.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+
+
+        status_change_list.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number number2) {
                 if(status_change_list.getItems().get((Integer) number2 ).equals("Disponible")){
@@ -60,7 +70,7 @@ public class ConnexionViewController extends BorderPane {
                     myStatus = User_Status.BUSY;
                 }
             }
-        });*/
+        });
         myStatus = User_Status.ONLINE;
     }
 
@@ -80,8 +90,6 @@ public class ConnexionViewController extends BorderPane {
         }
     }
 
-
-    public boolean ipseudoOK() { return pseudoOK; }
 
 
 }

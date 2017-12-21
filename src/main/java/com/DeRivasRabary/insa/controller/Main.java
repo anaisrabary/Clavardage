@@ -12,7 +12,6 @@ public class Main {
         Controller controller = new Controller(); //instantiation du contrôleur
         ClavardageNI.createInstance();
         ClavardageNI.getInstance().setController(controller);
-        //NetworkInterfaceParrot.getInstance().setController(controller);
 
         //On passe le contrôleur principal au contrôleur de vues pour que les vues de chat y ait accès
         ViewController.createInstance();
