@@ -46,8 +46,8 @@ public class HelloListener extends UDPListener implements Observable {
                 if(hey.getType() == Hello.Control_type.HELLO || hey.getType() == Hello.Control_type.ACK) {
                     //Gestion du socket de conversation
                     System.out.println("l'ip de " + hey.getPseudoEmmeteur() + " " + hey.getIpSender().toString());
-                    ni.addMap(hey.getPseudoEmmeteur() + "@" + hey.getIpSender().toString(), hey.getData());
-                    System.out.println("le pseudo dans la table " + hey.getPseudoEmmeteur() + "@" + hey.getIpSender().toString());
+                    ni.addMap(hey.getIpSender().toString(), hey.getData());
+                    System.out.println("le pseudo dans la table " + hey.getIpSender().toString());
                     ni.fireUpdate();
                     if (hey.getType() == Hello.Control_type.HELLO) {
                         ServerSocket com = new ServerSocket(BASEPORT);
@@ -62,7 +62,7 @@ public class HelloListener extends UDPListener implements Observable {
                 } else if(hey.getType() == Hello.Control_type.TMP_SOCKET || hey.getType() == Hello.Control_type.TMP_SOCKET_ACK) {
                     //Gestion de la demande de socket temporaire
                     System.out.println("on demande un socket temporaire");
-                    ni.addTmpMap(hey.getPseudoEmmeteur() + "@" + hey.getIpSender().toString(), hey.getData());
+                    ni.addTmpMap(hey.getIpSender().toString(), hey.getData());
                     ni.fireUpdate();
                     System.out.println("c'est à jour");
                     if(hey.getType() == Hello.Control_type.TMP_SOCKET) {

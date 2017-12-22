@@ -12,7 +12,7 @@ public final class   Notification extends PacketManager {
         ACK_CONNECT
     }
 
-    private Notification_type type;
+    private Notification_type typeN;
     private String data;
 
     /**
@@ -24,18 +24,18 @@ public final class   Notification extends PacketManager {
      * @param ipReceiver
      * @param pseudoEmetteur
      * @param pseudoDestinataire
-     * @param type
+     * @param typeN
      * @param data
      */
-    public Notification(InetAddress ipSender, InetAddress ipReceiver, String pseudoEmetteur, String pseudoDestinataire, Notification_type type, String data) {
+    public Notification(InetAddress ipSender, InetAddress ipReceiver, String pseudoEmetteur, String pseudoDestinataire, Notification_type typeN, String data) {
         super(ipSender, ipReceiver, pseudoEmetteur, pseudoDestinataire, TypePacket.NOTIF);
-        this.type = type;
+        this.typeN = typeN;
         this.data = data;
     }
 
 
-    public Notification_type getType() {
-        return this.type;
+    public Notification_type getTypeN() {
+        return this.typeN;
     }
 
     public String getData() {
@@ -51,9 +51,9 @@ public final class   Notification extends PacketManager {
 
     // TODO : getPseudoEmmeteur() au lieu de getpseudo(). Tu valides que c'est pseudo emmeteur et pas recepeteur ?
     public String toString() {
-        switch (this.type) {
+        switch (this.typeN) {
             case CONNECT :
-                return this.getPseudoEmmeteur() + " s'est connecté.";
+                return "NOTIFICATION PACKET : "+this.getPseudoEmmeteur() + " s'est connecté.";
             case DISCONNECT :
                 return this.getPseudoEmmeteur() + " s'est déconnecté.";
             case STATUS_CHANGE :

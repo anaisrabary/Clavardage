@@ -1,5 +1,6 @@
 package com.DeRivasRabary.insa.controller;
 
+import com.DeRivasRabary.insa.model.UserList;
 import com.DeRivasRabary.insa.network.ClavardageNI;
 import com.DeRivasRabary.insa.ui.MainGUIFX;
 import com.DeRivasRabary.insa.ui.ViewController;
@@ -20,6 +21,8 @@ public class Main {
         ViewController viewController = ViewController.getInstance();
         viewController.setController(controller);
 
+
+        UserList.createInstance();
         //Lancement interface graphique
         //On passe le contrôleur aux vues de bases (ie toutes les fenêtres hors chat)
         MainGUIFX.SetController(controller);

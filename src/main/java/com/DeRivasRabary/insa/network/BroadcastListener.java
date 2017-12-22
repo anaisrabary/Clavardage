@@ -29,10 +29,10 @@ public class BroadcastListener extends UDPListener{
             Notification n = (Notification) p;
                 UserList users = UserList.getInstance();
                 if(!n.getIpSender().equals(UserList.getMoi().getIPAdress())) {
-                    System.out.println("IP sender : " + n.getIpSender().toString());
-                    System.out.println("IP receiver : " + n.getIpReceiver().toString());
-
-                    switch (n.getType()) {
+                    /*System.out.println("IP sender : " + n.getIpSender().toString());
+                    System.out.println("IP receiver : " + n.getIpReceiver().toString());*/
+                    System.out.println(n.toString());
+                    switch (n.getTypeN()) {
                         case CONNECT:
                             System.out.println(n.getPseudoEmmeteur() + " vient de se connecter");
                             User u = new User(n.getPseudoEmmeteur(), n.getIpSender());
@@ -48,7 +48,7 @@ public class BroadcastListener extends UDPListener{
                             User u1 = users.findUserByIp (n.getIpSender());
                             viewController.updateView(viewController.getView(u1, false), ViewController.Update_type.NOT_EDITABLE, "");
                             users.removeUser(u1);
-                            ni.delMap(n.getPseudoEmmeteur() + "@" + n.getIpSender().toString());
+                            ni.delMap( n.getIpSender().toString());
                             break;
                         case STATUS_CHANGE:
                             System.out.println(n.getPseudoEmmeteur() + " est maintenant " + n.getData());

@@ -39,7 +39,7 @@ public class ClavardageNI {
     //Listener pour le notif
     private BroadcastListener notifListener;
 
-    //Hasmap entre pseudo du contact er socket
+    //Hasmap entre pseudo du contact et socket
     private HashMap<String, Integer> socketMap;
 
     //Table des sockets temporaires (utilisés pour le transfert de fichier par exemple)
@@ -85,9 +85,9 @@ public class ClavardageNI {
     private synchronized Integer negotiatePort(User dest, boolean tmp) {
         System.out.println("Je vais négocier le port (temporaire -> " + tmp + ")");
         try {
-            //System.out.println("anouk ok");
+            System.out.println("------socket base ok-------");
             ServerSocket communic = new ServerSocket(BASEPORT);
-            //System.out.println("socket com ok");
+            System.out.println("socket com ok");
             ChatListener listener = new ChatListener(communic);
             listener.start();
             listenersMap.put(BASEPORT, listener);
@@ -99,9 +99,9 @@ public class ClavardageNI {
             }
             BASEPORT++;
             wait(); // Attends que le thread qui écoute les messages de contrôle mette à jour la liste de sockets
-            //System.out.println("ok up to date");
-            //System.out.println("full pseudo de recherche : " + dest.getFullPseudo());
-            return (tmp ? tmpSocketMap.get(dest.getPseudo()) : socketMap.get(dest.getPseudo()));
+            System.out.println("ok up to date");
+            System.out.println("full pseudo de recherche : " + dest.getIPAdress());
+            return (tmp ? tmpSocketMap.get(dest.getIPAdress().toString()) : socketMap.get(dest.getIPAdress().toString()));
         } catch (IOException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
@@ -112,7 +112,7 @@ public class ClavardageNI {
     }
 
     private Socket getSocket(User dest, boolean tmp) {
-        Integer port = (tmp ? tmpSocketMap.get(dest.getPseudo()) : socketMap.get(dest.getPseudo()));
+        Integer port = (tmp ? tmpSocketMap.get(dest.getIPAdress().toString()) : socketMap.get(dest.getIPAdress().toString()));
         if(port == null) {
             port = negotiatePort(dest, tmp);
         } /*else {
@@ -168,7 +168,8 @@ public class ClavardageNI {
     public void broadcastNotification(Notification.Notification_type type, String data) {
         System.out.println("Broadcast to send");
         System.out.println("@ de broadcast : " + NetworkResourcefull.getBroadcastAddress().toString());
-        Notification notification = new Notification( UserList.getMoi().getIPAdress(), NetworkResourcefull.getBroadcastAddress(),"bcast",UserList.getMoi().getPseudo(), type, data);
+        Notification notification = new Notification( UserList.getMoi().getIPAdress(), NetworkResourcefull.getBroadcastAddress(),UserList.getMoi().getPseudo(),"bcast", type, data);
+        System.out.println(notification.toString());
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         ObjectOutputStream os = null;
         try {
