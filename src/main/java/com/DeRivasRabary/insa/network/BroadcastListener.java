@@ -29,6 +29,9 @@ public class BroadcastListener extends UDPListener{
             Notification n = (Notification) p;
                 UserList users = UserList.getInstance();
                 if(!n.getIpSender().equals(UserList.getMoi().getIPAdress())) {
+                    System.out.println("IP sender : " + n.getIpSender().toString());
+                    System.out.println("IP receiver : " + n.getIpReceiver().toString());
+
                     switch (n.getType()) {
                         case CONNECT:
                             System.out.println(n.getPseudo() + " vient de se connecter");
@@ -61,7 +64,7 @@ public class BroadcastListener extends UDPListener{
                                     break;
                             }
                             User contact = users.findUserByIp(n.getIpSender());
-                            contact.setStatus(status); // changement du statut dans le contact
+                            /*contact.setStatus(status); // changement du statut dans le contact*/
                             //changement du statut dans la vue si elle est ouverte
                             if(viewController.viewExists(contact)) {
                                 viewController.updateView(viewController.getView(contact, false), ViewController.Update_type.STATUS_CHANGE, "");
