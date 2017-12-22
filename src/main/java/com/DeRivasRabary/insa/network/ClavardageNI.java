@@ -154,7 +154,7 @@ public class ClavardageNI {
 
         Socket s = getSocket(dest, false);
         System.out.println("Okay j'ai la socket pour balancer la sauce");
-        Notification notification = new Notification(UserList.getMoi().getIPAdress(), dest.getIPAdress(), dest.getPseudo(), type, data);
+        Notification notification = new Notification(UserList.getMoi().getIPAdress(), dest.getIPAdress(),UserList.getMoi().getPseudo(), dest.getPseudo(), type, data);
         transmit(notification, s);
 
     }
@@ -168,7 +168,7 @@ public class ClavardageNI {
     public void broadcastNotification(Notification.Notification_type type, String data) {
         System.out.println("Broadcast to send");
         System.out.println("@ de broadcast : " + NetworkResourcefull.getBroadcastAddress().toString());
-        Notification notification = new Notification( UserList.getMoi().getIPAdress(), NetworkResourcefull.getBroadcastAddress(),"bcast", type, data);
+        Notification notification = new Notification( UserList.getMoi().getIPAdress(), NetworkResourcefull.getBroadcastAddress(),"bcast",UserList.getMoi().getPseudo(), type, data);
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         ObjectOutputStream os = null;
         try {
@@ -185,7 +185,7 @@ public class ClavardageNI {
     public void transmitMessage(String message, User dest) {
         Socket s = getSocket(dest, false);
         System.out.println("prêt à lancer le message");
-        Message textMessage = new Message(UserList.getMoi().getIPAdress(), dest.getIPAdress(), dest.getPseudo(), message);
+        Message textMessage = new Message(UserList.getMoi().getIPAdress(), dest.getIPAdress(),UserList.getMoi().getPseudo(), dest.getPseudo(), message);
         transmit(textMessage, s);
     }
 
@@ -194,13 +194,13 @@ public class ClavardageNI {
         System.out.println("Plus qu'à s'occuper du fichier !!");
         byte [] content = readBytesFromFile(file);
 
-        File filemessage = new File( UserList.getMoi().getIPAdress(), dest.getIPAdress(), dest.getPseudo(),  file.getName(), URLConnection.guessContentTypeFromName(file.getName()), file.length(), content);
+        File filemessage = new File( UserList.getMoi().getIPAdress(), dest.getIPAdress(), UserList.getMoi().getPseudo(),dest.getPseudo(),  file.getName(), URLConnection.guessContentTypeFromName(file.getName()), file.length(), content);
         transmit(filemessage, s);
     }
 
     protected void sendControl(User me, User dest, Hello.Control_type type, int data) {
         try {
-            Hello control_packet = new Hello( me.getIPAdress(), dest.getIPAdress(), dest.getPseudo(), type, data);
+            Hello control_packet = new Hello( me.getIPAdress(), dest.getIPAdress(), UserList.getMoi().getPseudo(),dest.getPseudo(), type, data);
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             ObjectOutputStream os = new ObjectOutputStream(outputStream);
             os.writeObject(control_packet);

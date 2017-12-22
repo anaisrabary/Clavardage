@@ -25,11 +25,12 @@ public class PacketFactory {
      * @param message
      * @return
      */
+    /*
     public Message createPacketMessage(InetAddress ipSender, InetAddress ipReceiver, String pseudo, String message){
         Message packetMessage = new Message(ipSender, ipReceiver, pseudo, message);
         return packetMessage;
     }
-
+*/
     /**
      * Méthode qui doit etre utilisée pour créer un hello
      * @param ipSender
@@ -39,10 +40,11 @@ public class PacketFactory {
      * @param data
      * @return
      */
+    /*
     public Hello createPacketHello(InetAddress ipSender, InetAddress ipReceiver, String pseudo, Hello.Control_type type, int data){
         Hello packetHello = new Hello(ipSender,ipReceiver,pseudo, type, data);
         return packetHello ;
-    }
+    }*/
 
     /**
      * Méthode qui doit etre utilisée pour créer un bye
@@ -51,9 +53,11 @@ public class PacketFactory {
      * @param pseudo
      * @return
      */
+    /*
     public Bye createPacketBye(InetAddress ipSender, InetAddress ipReceiver, String pseudo){
         Bye packetBye = new Bye(ipSender, ipReceiver, pseudo);
         return packetBye ;
     }
+    */
 
 }

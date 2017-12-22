@@ -25,7 +25,7 @@ public class Bye extends PacketManager {
         return isByeMsg;
     }
 
-
+/*
     public static Bye stringToBye(String msgstr, InetAddress ipsender, InetAddress ipreceiver) {
         int position = 9 + msgstr.indexOf("Pseudo : ");
         int length = msgstr.length();
@@ -33,5 +33,5 @@ public class Bye extends PacketManager {
         msgstr.getChars(position, length, dst, 0);
         String pseudo = new String(dst);
         return new Bye(ipsender,ipreceiver,pseudo);
-    }
+    }*/
 }

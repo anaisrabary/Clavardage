@@ -34,8 +34,8 @@ public class BroadcastListener extends UDPListener{
 
                     switch (n.getType()) {
                         case CONNECT:
-                            System.out.println(n.getPseudo() + " vient de se connecter");
-                            User u = new User(n.getPseudo(), n.getIpSender());
+                            System.out.println(n.getPseudoEmmeteur() + " vient de se connecter");
+                            User u = new User(n.getPseudoEmmeteur(), n.getIpSender());
                             if(!users.userExist(u)) {
                                 System.out.println("contact ajouté dans la table");
                                 users.addUser(u);
@@ -44,14 +44,14 @@ public class BroadcastListener extends UDPListener{
                             ni.sendNotification(u, Notification.Notification_type.ACK_CONNECT);
                             break;
                         case DISCONNECT:
-                            System.out.println(n.getPseudo() + " vient de se déconnecter");
+                            System.out.println(n.getPseudoEmmeteur() + " vient de se déconnecter");
                             User u1 = users.findUserByIp (n.getIpSender());
                             viewController.updateView(viewController.getView(u1, false), ViewController.Update_type.NOT_EDITABLE, "");
                             users.removeUser(u1);
-                            ni.delMap(n.getPseudo() + "@" + n.getIpSender().toString());
+                            ni.delMap(n.getPseudoEmmeteur() + "@" + n.getIpSender().toString());
                             break;
                         case STATUS_CHANGE:
-                            System.out.println(n.getPseudo() + " est maintenant " + n.getData());
+                            System.out.println(n.getPseudoEmmeteur() + " est maintenant " + n.getData());
                             User_Status status = User_Status.ONLINE; //valeur par défaut au cas où
                             //un peu sale mais efficace ! (pour envoyer l'enum dans le paquet en string)
                             switch (n.getData()) {

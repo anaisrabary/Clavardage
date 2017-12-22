@@ -14,8 +14,8 @@ public class File extends PacketManager {
     private double size;
     private byte[] content;
 
-    public File(InetAddress addrSource, InetAddress addrDestination, String pseudo,  String fileName, String mimeType, double size, byte[] content) {
-        super(addrSource, addrDestination, pseudo, FILE);
+    public File(InetAddress addrSource, InetAddress addrDestination, String pseudoSender,String pseudoReceiver,  String fileName, String mimeType, double size, byte[] content) {
+        super(addrSource, addrDestination, pseudoSender, pseudoReceiver, FILE);
         this.fileName = fileName;
         this.mimeType = mimeType;
         this.size = size;
