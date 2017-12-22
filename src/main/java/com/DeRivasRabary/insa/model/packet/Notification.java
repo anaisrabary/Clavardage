@@ -22,12 +22,13 @@ public final class   Notification extends PacketManager {
      *
      * @param ipSender
      * @param ipReceiver
-     * @param pseudo
+     * @param pseudoEmetteur
+     * @param pseudoDestinataire
      * @param type
      * @param data
      */
-    public Notification(InetAddress ipSender, InetAddress ipReceiver, String pseudo, Notification_type type, String data) {
-        super(ipSender, ipReceiver, pseudo, TypePacket.NOTIF);
+    public Notification(InetAddress ipSender, InetAddress ipReceiver, String pseudoEmetteur, String pseudoDestinataire, Notification_type type, String data) {
+        super(ipSender, ipReceiver, pseudoEmetteur, pseudoDestinataire, TypePacket.NOTIF);
         this.type = type;
         this.data = data;
     }
@@ -48,19 +49,19 @@ public final class   Notification extends PacketManager {
         return isMsg;
     }
 
-
+    // TODO : getPseudoEmmeteur() au lieu de getpseudo(). Tu valides que c'est pseudo emmeteur et pas recepeteur ?
     public String toString() {
         switch (this.type) {
             case CONNECT :
-                return this.getPseudo() + " s'est connecté.";
+                return this.getPseudoEmmeteur() + " s'est connecté.";
             case DISCONNECT :
-                return this.getPseudo() + " s'est déconnecté.";
+                return this.getPseudoEmmeteur() + " s'est déconnecté.";
             case STATUS_CHANGE :
                 switch (this.data) {
                     case "ONLINE" :
-                        return this.getPseudo() + " est passé \"en ligne\".";
+                        return this.getPseudoEmmeteur() + " est passé \"en ligne\".";
                     case "BUSY" :
-                        return this.getPseudo() + " est passé \"occupé\".";
+                        return this.getPseudoEmmeteur() + " est passé \"occupé\".";
                 }
                 break;
         }

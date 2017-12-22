@@ -11,10 +11,11 @@ public class Bye extends PacketManager {
      *
      * @param ipSender
      * @param ipReceiver
-     * @param pseudo
+     * @param pseudoEmetteur
+     * @param pseudoDestinataire
      */
-    public Bye(InetAddress ipSender, InetAddress ipReceiver, String pseudo) {
-        super(ipSender, ipReceiver, pseudo, TypePacket.BYE);
+    public Bye(InetAddress ipSender, InetAddress ipReceiver, String pseudoEmetteur, String pseudoDestinataire) {
+        super(ipSender, ipReceiver, pseudoEmetteur, pseudoDestinataire, TypePacket.BYE);
     }
 
 

@@ -15,16 +15,17 @@ public final class Message extends PacketManager{
      * Utiliser la classe PacketFactory pour construire un paquet
      * @param ipSender
      * @param ipReceiver
-     * @param pseudo
+     * @param pseudoEmetteur
+     * @param pseudoDestinataire
      * @param message
      */
-    public Message(InetAddress ipSender, InetAddress ipReceiver, String pseudo, String message){
-        super(ipSender, ipReceiver, pseudo, TypePacket.MESSAGE);
+    public Message(InetAddress ipSender, InetAddress ipReceiver, String pseudoEmetteur, String pseudoDestinataire, String message){
+        super(ipSender, ipReceiver, pseudoEmetteur, pseudoDestinataire, TypePacket.MESSAGE);
         this.message = message;
     }
 
 
-
+    /*
     public static boolean isMessageString(String msgstr){
         int position = msgstr.indexOf("Type :");
         boolean isMsg = msgstr.regionMatches(position,"Type : Message\n",0,15);
@@ -54,7 +55,7 @@ public final class Message extends PacketManager{
 
         return new Message(ipSender, ipReceiver, pseudo, message);
     }
-
+    */
 
     public String getData() {
         return this.message;

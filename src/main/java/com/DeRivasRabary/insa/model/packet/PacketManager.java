@@ -12,7 +12,8 @@ public abstract class PacketManager implements Serializable{
 
     private InetAddress ipSender ;
     private InetAddress ipReceiver ;
-    private String pseudo ;
+    private String pseudoEmmeteur ;
+    private String pseudoDestinataire ;
     private String date ;
     private TypePacket type ;
 
@@ -22,12 +23,15 @@ public abstract class PacketManager implements Serializable{
      * Génère la date du paquet
      * @param ipSender
      * @param ipReceiver
-     * @param pseudo
+     * @param pseudoEmetteur
+     * @param pseudoDestinataire
+     * @param type
      */
-    public PacketManager(InetAddress ipSender, InetAddress ipReceiver, String pseudo, TypePacket type){
+    public PacketManager(InetAddress ipSender, InetAddress ipReceiver, String pseudoEmetteur, String pseudoDestinataire, TypePacket type){
         this.ipSender = ipSender ;
         this.ipReceiver = ipReceiver ;
-        this.pseudo = pseudo ;
+        this.pseudoEmmeteur = pseudoEmetteur ;
+        this.pseudoDestinataire = pseudoDestinataire ;
         this.date = mediumDateFormat().format(new Date());
         this.type = type;
     }
@@ -69,7 +73,9 @@ public abstract class PacketManager implements Serializable{
      */
     public InetAddress getIpReceiver() { return  ipReceiver; }
 
-    public String getPseudo() { return pseudo;}
+    public String getPseudoEmmeteur() { return pseudoEmmeteur;}
+
+    public String getPseudoDestinataire() { return pseudoDestinataire;}
 
     public String getDate() { return date;  }
 
@@ -102,8 +108,9 @@ public abstract class PacketManager implements Serializable{
         String ipsender = "IPSource : " + this.ipSender + "\n" ;
         String ipreceiver = "IPDestination : " + this.ipReceiver + "\n";
         String date = "Date : " + this.date + "\n";
-        String pseudo = "Pseudo : " + this.pseudo + "\n" ;
-        return delimiter + type + ipsender + ipreceiver + date + pseudo +delimiter ;
+        String pseudoe = "PseudoEmetteur : " + this.pseudoEmmeteur + "\n" ;
+        String pseudod = "PseudoDestinataire : " + this.pseudoDestinataire +"\n" ;
+        return delimiter + type + ipsender + ipreceiver + date + pseudoe + pseudod + delimiter ;
     }
 
 

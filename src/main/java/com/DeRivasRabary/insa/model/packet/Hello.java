@@ -23,12 +23,13 @@ public class Hello extends PacketManager {
      *
      * @param ipSender
      * @param ipReceiver
-     * @param pseudo
+     * @param pseudoEmetteur
+     * @param pseudoDestinataire
      * @param type
      * @param data
      */
-    public Hello(InetAddress ipSender,InetAddress ipReceiver, String pseudo, Control_type type, int data) {
-        super(ipSender, ipReceiver, pseudo, TypePacket.HELLO);
+    public Hello(InetAddress ipSender,InetAddress ipReceiver, String pseudoEmetteur, String pseudoDestinataire, Control_type type, int data) {
+        super(ipSender, ipReceiver, pseudoEmetteur, pseudoDestinataire, TypePacket.HELLO);
         this.type = type;
         this.data = data;
     }
