@@ -3,7 +3,7 @@ package com.DeRivasRabary.insa.model.packet;
 
 import java.net.InetAddress;
 
-public final class Notification extends PacketManager {
+public final class   Notification extends PacketManager {
 
     public enum Notification_type {
         CONNECT,
