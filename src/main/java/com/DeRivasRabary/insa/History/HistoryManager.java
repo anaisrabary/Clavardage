@@ -1,29 +1,35 @@
 package com.DeRivasRabary.insa.History;
 
+import com.DeRivasRabary.insa.model.packet.Message;
 import com.opencsv.CSVWriter;
 
 import java.io.FileWriter;
+import java.io.IOException;
 
 public class HistoryManager {
 
-    public HistoryManager(){
+    public String filename;
+    private char sep = ',';
+
+    public HistoryManager(String ipDest) throws IOException {
         //nomdufichier @IPdestinataire.csv
         //contient historique des conversations
-        String csv = "data.csv";
-        try {
-            CSVWriter writer = new CSVWriter(new FileWriter(csv));
+        this.filename = ipDest+"-data.csv";
 
-            //Create record
-            String[] record = "4,David,Miller,Australia,30".split(",");
-            //Write the record to file
-            writer.writeNext(record);
+            CSVWriter writer = new CSVWriter(new FileWriter(filename));
 
             //close the writer
             writer.close();
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
+    }
+
+    public void addMessage(Message message) throws IOException {
+        CSVWriter writer = new CSVWriter(new FileWriter(filename, true));
+        String messageStored = message.getPseudoEmmeteur() + sep + message.getDate() + sep + message.getData();
+        String [] record = messageStored.split(",");
+
+        writer.writeNext(record);
+
+        writer.close();
     }
 
 
