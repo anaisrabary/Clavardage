@@ -1,11 +1,15 @@
-package com.DeRivasRabary.insa.History;
+package com.DeRivasRabary.insa.Test;
 
+import com.DeRivasRabary.insa.History.HistoryManager;
 import com.DeRivasRabary.insa.model.packet.Message;
 
 import java.io.IOException;
 import java.net.InetAddress;
 
 public class TestHistory {
+    //TODO : faire des tests unitaires
+
+
     public static void main(String[] args) throws IOException {
 
         HistoryManager localHistory = new HistoryManager("127.0.0.1");
