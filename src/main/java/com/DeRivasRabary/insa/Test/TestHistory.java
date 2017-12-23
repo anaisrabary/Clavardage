@@ -2,13 +2,15 @@ package com.DeRivasRabary.insa.Test;
 
 import com.DeRivasRabary.insa.History.HistoryManager;
 import com.DeRivasRabary.insa.model.packet.Message;
+import junit.framework.TestCase;
 
 import java.io.IOException;
 import java.net.InetAddress;
 
-public class TestHistory {
+public class TestHistory extends TestCase {
     //TODO : faire des tests unitaires
 
+    
 
     public static void main(String[] args) throws IOException {
 
