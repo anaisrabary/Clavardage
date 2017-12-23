@@ -1,4 +1,4 @@
-/*package com.DeRivasRabary.insa.Test;
+package com.DeRivasRabary.insa.Test;
 
 import com.DeRivasRabary.insa.model.User;
 import com.DeRivasRabary.insa.model.UserList;
@@ -14,222 +14,209 @@ import com.DeRivasRabary.insa.model.User;
 import com.DeRivasRabary.insa.model.UserList;
 import junit.framework.TestCase;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 
 public class UserTest extends TestCase {
 
-/*
-    public void testUserCreation(){
-        User user = new User("Jeannot","127.0.0.1");
+
+    public void testUserCreation() throws UnknownHostException {
+        User user = new User("Jeannot", InetAddress.getByName("127.0.0.1"));
         assertEquals("Jeannot", user.getPseudo());
-        assertEquals("127.0.0.1",user.getIPAdress());
+        assertEquals("/127.0.0.1",user.getIPAdress().toString());
     }
 
 
-    public void testUserDisplay(){
-        User user = new User("Jeannot","127.0.0.1");
-        assertEquals("pseudo : Jeannot, ip : 127.0.0.1\n", user.toString());
+    public void testUserDisplay() throws UnknownHostException {
+        User user = new User("Jeannot", InetAddress.getByName("127.0.0.1"));
+        assertEquals("pseudo : Jeannot, ip : /127.0.0.1\n", user.toString());
     }
 
 
-    public void testLocalUserCreation(){
-        LocalUser localUser = new LocalUser("Anaisseee","127.0.0.2",true);
-        assertEquals("Anaisseee",localUser.getPseudo());
-        assertEquals("127.0.0.2",localUser.getIPAdress());
-        assertEquals(true,localUser.actif);
-    }
 
-    public void testChangeStateOfLocalUser(){
-        LocalUser localUser = new LocalUser("Bloop","127.0.0.1",true);
-        assertEquals(true,localUser.actif);
-        localUser.changeEtatActif(false);
-        assertEquals(false,localUser.actif);
-    }
-
-    public void testDisplayAUserList(){
-        User user1 = new User("Jeannot","127.0.0.1");
-        User user2 = new User("Pierrot","127.0.0.2");
-        User user3 = new User("Paulo","127.0.0.3");
+    public void testDisplayAUserList() throws UnknownHostException {
+        User user1 = new User("Jeannot", InetAddress.getByName("127.0.0.1"));
+        User user2 = new User("Pierrot", InetAddress.getByName("127.0.0.2"));
+        User user3 = new User("Paulo", InetAddress.getByName("127.0.0.3"));
         ArrayList<User> listeUser = new ArrayList<User>();
-        listeUser.add(user1);listeUser.add(user2);listeUser.add(user3);
+        listeUser.add(user1);
+        listeUser.add(user2);
+        listeUser.add(user3);
         String message = listeUser.toString();
-        assertEquals("[pseudo : Jeannot, ip : 127.0.0.1\n, pseudo : Pierrot, ip : 127.0.0.2\n, pseudo : Paulo, ip : 127.0.0.3\n]",message);
+        assertEquals("[pseudo : Jeannot, ip : /127.0.0.1\n, pseudo : Pierrot, ip : /127.0.0.2\n, pseudo : Paulo, ip : /127.0.0.3\n]", message);
     }
 
-
-    public void testCreateUserListWithOneUserEachTime(){
-        User user = new User("Jeannot","127.0.0.1");
-        User user2 = new User("Pierrot","127.0.0.2");
+/*
+    public void testCreateUserListWithOneUserEachTime() {
+        User user = new User("Jeannot", "127.0.0.1");
+        User user2 = new User("Pierrot", "127.0.0.2");
         UserList userList = new UserList(user);
         userList.userList.add(user2);
-        String message = "" ;
-        for (User u:userList.userList) {
+        String message = "";
+        for (User u : userList.userList) {
             message = message + u.toString();
         }
-        assertEquals("pseudo : Jeannot, ip : 127.0.0.1\npseudo : Pierrot, ip : 127.0.0.2\n",message);
+        assertEquals("pseudo : Jeannot, ip : 127.0.0.1\npseudo : Pierrot, ip : 127.0.0.2\n", message);
     }
 
 
-    public void testCreateUserListWithAList(){
-        User user1 = new User("Jeannot","127.0.0.1");
-        User user2 = new User("Pierrot","127.0.0.2");
+    public void testCreateUserListWithAList() {
+        User user1 = new User("Jeannot", "127.0.0.1");
+        User user2 = new User("Pierrot", "127.0.0.2");
         ArrayList<User> listeUser = new ArrayList<User>();
-        listeUser.add(user1); listeUser.add(user2);
+        listeUser.add(user1);
+        listeUser.add(user2);
         UserList userList = new UserList(listeUser);
         String message = userList.toString();
-        assertEquals("pseudo : Jeannot, ip : 127.0.0.1\npseudo : Pierrot, ip : 127.0.0.2\n",message);
+        assertEquals("pseudo : Jeannot, ip : 127.0.0.1\npseudo : Pierrot, ip : 127.0.0.2\n", message);
     }
 
 
-    public void testGetUserByIp(){
-        User user1 = new User("Jeannot","127.0.0.1");
-        User user2 = new User("Pierrot","127.0.0.2");
+    public void testGetUserByIp() {
+        User user1 = new User("Jeannot", "127.0.0.1");
+        User user2 = new User("Pierrot", "127.0.0.2");
         User user3 = new User("Paulo", "127.0.0.3");
         UserList userList = new UserList(user1);
-        userList.userList.add(user2); userList.userList.add(user3);
-        User userRequested ;
+        userList.userList.add(user2);
+        userList.userList.add(user3);
+        User userRequested;
         try {
             userRequested = userList.findUserByIp("127.0.0.1");
             assertEquals("Jeannot", userRequested.getPseudo());
             assertEquals("127.0.0.1", userRequested.getIPAdress());
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Exception sur GetUserByIP pour le premier User - KO");
-            assertEquals(false,true);
+            assertEquals(false, true);
         }
         try {
             userRequested = userList.findUserByIp("127.0.0.2");
             assertEquals("Pierrot", userRequested.getPseudo());
             assertEquals("127.0.0.2", userRequested.getIPAdress());
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Exception sur GetUserByIP pour le deuxieme User - KO");
-            assertEquals(false,true);
+            assertEquals(false, true);
         }
         try {
             userRequested = userList.findUserByIp("127.0.0.3");
             assertEquals("Paulo", userRequested.getPseudo());
             assertEquals("127.0.0.3", userRequested.getIPAdress());
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Exception sur GetUserByIP pour le troisieme User - KO ");
-            assertEquals(false,true);
+            assertEquals(false, true);
         }
         try {
             userRequested = userList.findUserByIp("233468766");
-            assertEquals(false,true);
-        }
-        catch (Exception e){
-            assertEquals(true,true);
+            assertEquals(false, true);
+        } catch (Exception e) {
+            assertEquals(true, true);
             System.out.println("Exception sur GetUserByIP pour un utilisateur inexistant - OK");
         }
     }
 
 
-    public void testGetUserByPseudo(){
-        User user1 = new User("Jeannot","127.0.0.1");
-        User user2 = new User("Pierrot","127.0.0.2");
+    public void testGetUserByPseudo() {
+        User user1 = new User("Jeannot", "127.0.0.1");
+        User user2 = new User("Pierrot", "127.0.0.2");
         User user3 = new User("Paulo", "127.0.0.3");
         UserList userList = new UserList(user1);
-        userList.userList.add(user2); userList.userList.add(user3);
-        User userToFound ;
+        userList.userList.add(user2);
+        userList.userList.add(user3);
+        User userToFound;
 
         try {
-        userToFound = userList.findUserByPseudoExact("Jeannot");
-        assertEquals("Jeannot",userToFound.getPseudo());
-        assertEquals("127.0.0.1",userToFound.getIPAdress()); }
-        catch (Exception e){
+            userToFound = userList.findUserByPseudoExact("Jeannot");
+            assertEquals("Jeannot", userToFound.getPseudo());
+            assertEquals("127.0.0.1", userToFound.getIPAdress());
+        } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Exception sur GetUserByPseudo pour le premier User - KO ");
-            assertEquals(false,true);
+            assertEquals(false, true);
         }
 
-        try{
-        userToFound = userList.findUserByPseudoExact("Pierrot");
-        assertEquals("Pierrot",userToFound.getPseudo());
-        assertEquals("127.0.0.2",userToFound.getIPAdress());}
-        catch (Exception e){
+        try {
+            userToFound = userList.findUserByPseudoExact("Pierrot");
+            assertEquals("Pierrot", userToFound.getPseudo());
+            assertEquals("127.0.0.2", userToFound.getIPAdress());
+        } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Exception sur GetUserByPseudo pour le deuxieme User - KO ");
-            assertEquals(false,true);
+            assertEquals(false, true);
         }
 
         try {
             userToFound = userList.findUserByPseudoExact("Paulo");
             assertEquals("Paulo", userToFound.getPseudo());
             assertEquals("127.0.0.3", userToFound.getIPAdress());
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Exception sur GetUserByPseudo pour le troisieme User - KO ");
-            assertEquals(false,true);
+            assertEquals(false, true);
         }
 
-        try{
+        try {
             userToFound = userList.findUserByPseudoExact("Fred");
             assertEquals("Fred", userToFound.getPseudo());
             assertEquals("127.0.0.4", userToFound.getIPAdress());
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Exception sur GetUserByPseudo pour un user inexistant - OK ");
-            assertEquals(true,true);
+            assertEquals(true, true);
         }
     }
 
 
-
-    public void testUpdatePseudoByIp(){
-        User user1 = new User("Jeannot","127.0.0.1");
-        User user2 = new User("Pierrot","127.0.0.2");
+    public void testUpdatePseudoByIp() {
+        User user1 = new User("Jeannot", "127.0.0.1");
+        User user2 = new User("Pierrot", "127.0.0.2");
         User user3 = new User("Paulo", "127.0.0.3");
         UserList userList = new UserList(user1);
-        userList.userList.add(user2); userList.userList.add(user3);
-        User userModified = new User("","") ;
+        userList.userList.add(user2);
+        userList.userList.add(user3);
+        User userModified = new User("", "");
         // Cas où un utilisateur existe
         try {
             userList.updatePseudobyIp("127.0.0.2", "Fred");
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Exception levée lors de l'update Pseudo by Ip - KO");
         }
         try {
             userModified = userList.findUserByIp("127.0.0.2");
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Exception levée lors de l'update Pseudo by Ip - KO");
         }
-        assertEquals("Fred",userModified.getPseudo());
+        assertEquals("Fred", userModified.getPseudo());
 
         // Cas où l'utilisateur n'existe pas
-        try{
-            userList.updatePseudobyIp("127.0.0.4","boo");
+        try {
+            userList.updatePseudobyIp("127.0.0.4", "boo");
             assertEquals("false", "true");
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-            assertEquals("true","true");
+            assertEquals("true", "true");
         }
     }
 
 
-    public void testUserListMap(){
+    public void testUserListMap() {
 
     }
 
     public static void main(String[] args) {
-        User user1 = new User("Jeannot","127.0.0.1");
-        User user2 = new User("Pierrot","127.0.0.2");
+        User user1 = new User("Jeannot", "127.0.0.1");
+        User user2 = new User("Pierrot", "127.0.0.2");
         User user3 = new User("Paulo", "127.0.0.3");
-        UserList listMap = UserList.createInstance() ;
-        listMap.addUser(user1); listMap.addUser(user2); listMap.addUser(user3);
+        UserList listMap = UserList.createInstance();
+        listMap.addUser(user1);
+        listMap.addUser(user2);
+        listMap.addUser(user3);
         System.out.println("Affichage des users : ");
         System.out.println(listMap.toString());
         System.out.println("recherche user 127.0.0.1");
@@ -242,16 +229,14 @@ public class UserTest extends TestCase {
             System.out.println("******");
             ArrayList<User> users = listMap.findListUserByPseudo("fred");
             System.out.println(users.toString());
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.err.println("utilisateur pas trouvé");
         }
 
 
-
-*/
-
     }
+    */
+}
 
 
 
