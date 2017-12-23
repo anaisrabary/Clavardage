@@ -50,16 +50,16 @@ public class UserTest extends TestCase {
     }
 
 /*
-    public void testCreateUserListWithOneUserEachTime() {
-        User user = new User("Jeannot", "127.0.0.1");
-        User user2 = new User("Pierrot", "127.0.0.2");
+    public void testCreateUserListWithOneUserEachTime() throws UnknownHostException {
+        User user = new User("Jeannot", InetAddress.getByName("127.0.0.1"));
+        User user2 = new User("Pierrot",  InetAddress.getByName("127.0.0.2"));
         UserList userList = new UserList(user);
         userList.userList.add(user2);
         String message = "";
         for (User u : userList.userList) {
             message = message + u.toString();
         }
-        assertEquals("pseudo : Jeannot, ip : 127.0.0.1\npseudo : Pierrot, ip : 127.0.0.2\n", message);
+        assertEquals("pseudo : Jeannot, ip : /127.0.0.1\npseudo : Pierrot, ip : /127.0.0.2\n", message);
     }
 
 

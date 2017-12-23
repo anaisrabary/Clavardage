@@ -6,6 +6,9 @@ import com.DeRivasRabary.insa.model.packet.Hello;
 import com.DeRivasRabary.insa.model.packet.Message;
 import junit.framework.TestCase;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 
 /**
  * Unit test for simple App.
@@ -13,37 +16,42 @@ import junit.framework.TestCase;
 
 public class PacketTest extends TestCase {
 
-/*
-    public void testCreateMessagePacket(){
+
+    public void testCreateMessagePacket() throws UnknownHostException {
         Message packetMessage = new PacketFactory().createPacketMessage(
-                "127.0.0.1","127.0.0.2","Me","HelloWorld");
-        assertEquals("127.0.0.1",packetMessage.ipSender);
-        assertEquals("127.0.0.2", packetMessage.ipReceiver);
-        assertEquals("Me",packetMessage.pseudo);
-        assertEquals("HelloWorld",packetMessage.message);
-        System.out.println("Heure du message à vérifier manuellement : " + packetMessage.date);
+                InetAddress.getByName("127.0.0.1"),InetAddress.getByName("127.0.0.2"),
+                "Me","you","HelloWorld");
+        assertEquals("/127.0.0.1",packetMessage.getIpSender().toString());
+        assertEquals("/127.0.0.2", packetMessage.getIpReceiver().toString());
+        assertEquals("Me",packetMessage.getPseudoEmmeteur());
+        assertEquals("you",packetMessage.getPseudoDestinataire());
+        assertEquals("HelloWorld",packetMessage.getData());
+        System.out.println("Heure du message à vérifier manuellement : " + packetMessage.getDate());
     }
 
-    public void testCreateByePacket(){
+    public void testCreateByePacket() throws UnknownHostException {
         Bye byeMessage = new PacketFactory().createPacketBye(
-                "127.0.0.1","192.168.1.1","Fred");
-        assertEquals("127.0.0.1",byeMessage.ipSender);
-        assertEquals("192.168.1.1",byeMessage.ipReceiver);
-        assertEquals("Fred",byeMessage.pseudo);
-        System.out.println("Heure du bye à vérifier manuellement : " + byeMessage.date);
+                InetAddress.getByName("127.0.0.1"),InetAddress.getByName("192.168.1.1"),"Fred","Bloop");
+        assertEquals("/127.0.0.1",byeMessage.getIpSender().toString());
+        assertEquals("/192.168.1.1",byeMessage.getIpReceiver().toString());
+        assertEquals("Fred",byeMessage.getPseudoEmmeteur());
+        assertEquals("Bloop",byeMessage.getPseudoDestinataire());
+        System.out.println("Heure du bye à vérifier manuellement : " + byeMessage.getDate());
     }
 
-    public void testCreateHelloPacket(){
+    public void testCreateHelloPacket() throws UnknownHostException {
         Hello helloMessage = new PacketFactory().createPacketHello(
-                "127.0.0.1","192.168.1.1","Fred",true);
-        assertEquals("127.0.0.1",helloMessage.ipSender);
-        assertEquals("192.168.1.1",helloMessage.ipReceiver);
-        assertEquals("Fred",helloMessage.pseudo);
-        assertEquals(Boolean.TRUE,helloMessage.replyRec);
-        System.out.println("Heure du hello à vérifier manuellement : " + helloMessage.date);
+                InetAddress.getByName("127.0.0.1"),InetAddress.getByName("192.168.1.1"),"Fred","Bibi", Hello.Control_type.ACK,1);
+        assertEquals("/127.0.0.1",helloMessage.getIpSender().toString());
+        assertEquals("/192.168.1.1",helloMessage.getIpReceiver().toString());
+        assertEquals("Fred",helloMessage.getPseudoEmmeteur());
+        assertEquals("Bibi",helloMessage.getPseudoDestinataire());
+        assertEquals(Hello.Control_type.ACK,helloMessage.getType());
+        assertEquals(1,helloMessage.getData());
+        System.out.println("Heure du hello à vérifier manuellement : " + helloMessage.getDate());
     }
 
-
+/*
     public void testDisplayMessagePacket(){
         Message packetMessage = new PacketFactory().createPacketMessage(
                 "192.168.0.1","192.168.0.2","Jeannot","HelloWorld");
