@@ -75,4 +75,17 @@ public class Hello extends PacketManager {
     }
     */
 
+    public String toString(){
+        String zetype = "Type : Hello\n";
+        String ipsender = "IPSource : " + this.getIpSender() + "\n" ;
+        String ipreceiver = "IPDestination : " + this.getIpReceiver() + "\n";
+        String date = "Date : " + this.getDate() + "\n";
+        String pseudoe = "PseudoEmetteur : " + this.getPseudoEmmeteur() + "\n" ;
+        String pseudod = "PseudoDestinataire : " + this.getPseudoDestinataire() +"\n";
+        String controlType = "ControlType : "+ this.getType().toString() +"\n";
+        String data = "Data : " + this.getData() + "\n";
+
+        return zetype + ipsender + ipreceiver + date + pseudoe + pseudod + controlType + data ;
+    }
+
 }

@@ -51,52 +51,52 @@ public class PacketTest extends TestCase {
         System.out.println("Heure du hello à vérifier manuellement : " + helloMessage.getDate());
     }
 
-/*
-    public void testDisplayMessagePacket(){
+
+    public void testDisplayMessagePacket() throws UnknownHostException {
         Message packetMessage = new PacketFactory().createPacketMessage(
-                "192.168.0.1","192.168.0.2","Jeannot","HelloWorld");
-        assertEquals("******************************\n" +
-                        "Type : Message\nIPSource : 192.168.0.1\n" +
-                        "IPDestination : 192.168.0.2\n" +
-                        "Date : " + packetMessage.date + "\n" +
-                        "Pseudo : Jeannot\n" +
-                        "Message : HelloWorld\n******************************\n"
+                InetAddress.getByName("192.168.0.1"),InetAddress.getByName("192.168.0.2"),"Jeannot","Pierrot", "HelloWorld");
+        assertEquals("Type : Message\nIPSource : /192.168.0.1\n" +
+                        "IPDestination : /192.168.0.2\n" +
+                        "Date : " + packetMessage.getDate() + "\n" +
+                        "PseudoEmetteur : Jeannot\n" +
+                        "PseudoDestinataire : Pierrot\n" +
+                        "Message : HelloWorld\n"
                         ,packetMessage.toString());
     }
 
-    public void testDisplayByePacket(){
+    public void testDisplayByePacket() throws UnknownHostException {
         Bye byeMessage = new PacketFactory().createPacketBye(
-                "192.168.3.1","192.168.3.2","Fred");
-        assertEquals("******************************\n" +
-                        "Type : Bye\nIPSource : 192.168.3.1\n" +
-                        "IPDestination : 192.168.3.2\n" +
-                        "Date : " + byeMessage.date + "\n" +
-                        "Pseudo : Fred\n" +
-                        "******************************\n"
+                InetAddress.getByName("192.168.3.1"),InetAddress.getByName("192.168.3.2"),"Fred",
+                "Toto");
+        assertEquals("Type : Bye\nIPSource : /192.168.3.1\n" +
+                        "IPDestination : /192.168.3.2\n" +
+                        "Date : " + byeMessage.getDate() + "\n" +
+                        "PseudoEmetteur : Fred\n" +
+                        "PseudoDestinataire : Toto\n"
                         ,byeMessage.toString());
     }
 
-    public void testDisplayHelloPacket() {
+    public void testDisplayHelloPacket() throws UnknownHostException {
         Hello helloMessage = new PacketFactory().createPacketHello(
-                "192.168.10.10", "192.168.10.11", "Fred", true);
-        assertEquals("******************************\n" +
-                        "Type : Hello\n" +
-                        "IPSource : 192.168.10.10\n" +
-                        "IPDestination : 192.168.10.11\n" +
-                        "Date : " + helloMessage.date + "\n" +
-                        "Pseudo : Fred\n" +
-                        "ReplyRec : true\n" +
-                        "******************************\n"
+                InetAddress.getByName("192.168.10.10"),InetAddress.getByName( "192.168.10.11"), "Fred",
+                "Titi", Hello.Control_type.ACK,1);
+        assertEquals("Type : Hello\n" +
+                        "IPSource : /192.168.10.10\n" +
+                        "IPDestination : /192.168.10.11\n" +
+                        "Date : " + helloMessage.getDate() + "\n" +
+                        "PseudoEmetteur : Fred\n" +
+                        "PseudoDestinataire : Titi\n" +
+                        "ControlType : ACK\n" +
+                        "Data : 1\n"
                 , helloMessage.toString());
     }
 
 
 
-    // TODO : Essayer de transformer un string en paquet
     public static void main(String[] args) {
 
     }
-    */
+
 }
 
 

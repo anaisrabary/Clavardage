@@ -104,13 +104,26 @@ public abstract class PacketManager implements Serializable{
     @Override
     public String toString(){
         String delimiter = "******************************\n"; // 30 *
-        String type = "Type : Message\n";
+        String zetype ;
+        if (this.type==TypePacket.BYE){
+             zetype = "Type : Bye\n";
+        }
+        else if (this.type==TypePacket.HELLO){
+             zetype = "Type : Hello\n";
+        }
+        else if (this.type==TypePacket.MESSAGE){
+             zetype = "Type : Message\n";
+        }
+        else {
+             zetype = "Type : Unknown\n";
+        }
         String ipsender = "IPSource : " + this.ipSender + "\n" ;
         String ipreceiver = "IPDestination : " + this.ipReceiver + "\n";
         String date = "Date : " + this.date + "\n";
         String pseudoe = "PseudoEmetteur : " + this.pseudoEmmeteur + "\n" ;
         String pseudod = "PseudoDestinataire : " + this.pseudoDestinataire +"\n" ;
-        return delimiter + type + ipsender + ipreceiver + date + pseudoe + pseudod + delimiter ;
+
+        return zetype + ipsender + ipreceiver + date + pseudoe + pseudod ;
     }
 
 

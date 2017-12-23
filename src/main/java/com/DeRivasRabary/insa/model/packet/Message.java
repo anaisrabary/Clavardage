@@ -60,4 +60,18 @@ public final class Message extends PacketManager{
     public String getData() {
         return this.message;
     }
+
+    public String toString(){
+        String zetype = "Type : Message\n";
+        String ipsender = "IPSource : " + this.getIpSender() + "\n" ;
+        String ipreceiver = "IPDestination : " + this.getIpReceiver() + "\n";
+        String date = "Date : " + this.getDate() + "\n";
+        String pseudoe = "PseudoEmetteur : " + this.getPseudoEmmeteur() + "\n" ;
+        String pseudod = "PseudoDestinataire : " + this.getPseudoDestinataire() +"\n" ;
+        String message = "Message : " + this.getData() +"\n";
+
+        return zetype + ipsender + ipreceiver + date + pseudoe + pseudod + message ;
+    }
+
+
 }

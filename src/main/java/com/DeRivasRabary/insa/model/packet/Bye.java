@@ -34,4 +34,15 @@ public class Bye extends PacketManager {
         String pseudo = new String(dst);
         return new Bye(ipsender,ipreceiver,pseudo);
     }*/
+    public String toString(){
+        String zetype = "Type : Bye\n";
+        String ipsender = "IPSource : " + this.getIpSender() + "\n" ;
+        String ipreceiver = "IPDestination : " + this.getIpReceiver() + "\n";
+        String date = "Date : " + this.getDate() + "\n";
+        String pseudoe = "PseudoEmetteur : " + this.getPseudoEmmeteur() + "\n" ;
+        String pseudod = "PseudoDestinataire : " + this.getPseudoDestinataire() +"\n" ;
+
+        return zetype + ipsender + ipreceiver + date + pseudoe + pseudod  ;
+    }
+
 }
